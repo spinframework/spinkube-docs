@@ -55,14 +55,14 @@ kubectl wait --for=condition=available --timeout=300s deployment/cert-manager-we
 > every node.
 
 ```console { data-plausible="copy-quick-apply-runtime-class" }
-kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.4.0/spin-operator.runtime-class.yaml
+kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.5.0/spin-operator.runtime-class.yaml
 ```
 
 4. Apply the [Custom Resource Definitions]({{< ref "glossary#custom-resource-definition-crd" >}})
    used by the Spin Operator:
 
 ```console { data-plausible="copy-quick-apply-crd" }
-kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.4.0/spin-operator.crds.yaml
+kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.5.0/spin-operator.crds.yaml
 ```
 
 ## Deploy the Spin Operator
@@ -77,7 +77,7 @@ and pods are spinning up.
 helm install spin-operator \
   --namespace spin-operator \
   --create-namespace \
-  --version 0.4.0 \
+  --version 0.5.0 \
   --wait \
   oci://ghcr.io/spinkube/charts/spin-operator
 ```
@@ -85,7 +85,7 @@ helm install spin-operator \
 Lastly, create the [shim executor]({{< ref "glossary#spin-app-executor-crd" >}}):
 
 ```console { data-plausible="copy-quick-create-shim-executor" }
-kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.4.0/spin-operator.shim-executor.yaml
+kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.5.0/spin-operator.shim-executor.yaml
 ```
 
 ## Run the Sample Application

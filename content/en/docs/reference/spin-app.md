@@ -170,6 +170,14 @@ cannot be defined if this is enabled. By default EnableAutoscaling is false.<br/
         </td>
         <td>false</td>
       </tr><tr>
+        <td><b>serviceAccountName</b></td>
+        <td>string</td>
+        <td>
+          ServiceAccountName is the name of the Kubernetes service account to use for the pod.
+If not specified, the default service account will be used.<br/>
+        </td>
+        <td>false</td>
+      </tr><tr>
         <td><b>serviceAnnotations</b></td>
         <td>map[string]string</td>
         <td>
@@ -1637,6 +1645,8 @@ More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/nam
         <td>
           awsElasticBlockStore represents an AWS Disk resource that is attached to a
 kubelet's host machine and then exposed to the pod.
+Deprecated: AWSElasticBlockStore is deprecated. All operations for the in-tree
+awsElasticBlockStore type are redirected to the ebs.csi.aws.com CSI driver.
 More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore<br/>
         </td>
         <td>false</td>
@@ -1644,21 +1654,26 @@ More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockst
         <td><b><a href="#spinappspecvolumesindexazuredisk">azureDisk</a></b></td>
         <td>object</td>
         <td>
-          azureDisk represents an Azure Data Disk mount on the host and bind mount to the pod.<br/>
+          azureDisk represents an Azure Data Disk mount on the host and bind mount to the pod.
+Deprecated: AzureDisk is deprecated. All operations for the in-tree azureDisk type
+are redirected to the disk.csi.azure.com CSI driver.<br/>
         </td>
         <td>false</td>
       </tr><tr>
         <td><b><a href="#spinappspecvolumesindexazurefile">azureFile</a></b></td>
         <td>object</td>
         <td>
-          azureFile represents an Azure File Service mount on the host and bind mount to the pod.<br/>
+          azureFile represents an Azure File Service mount on the host and bind mount to the pod.
+Deprecated: AzureFile is deprecated. All operations for the in-tree azureFile type
+are redirected to the file.csi.azure.com CSI driver.<br/>
         </td>
         <td>false</td>
       </tr><tr>
         <td><b><a href="#spinappspecvolumesindexcephfs">cephfs</a></b></td>
         <td>object</td>
         <td>
-          cephFS represents a Ceph FS mount on the host that shares a pod's lifetime<br/>
+          cephFS represents a Ceph FS mount on the host that shares a pod's lifetime.
+Deprecated: CephFS is deprecated and the in-tree cephfs type is no longer supported.<br/>
         </td>
         <td>false</td>
       </tr><tr>
@@ -1666,6 +1681,8 @@ More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockst
         <td>object</td>
         <td>
           cinder represents a cinder volume attached and mounted on kubelets host machine.
+Deprecated: Cinder is deprecated. All operations for the in-tree cinder type
+are redirected to the cinder.csi.openstack.org CSI driver.
 More info: https://examples.k8s.io/mysql-cinder-pd/README.md<br/>
         </td>
         <td>false</td>
@@ -1680,7 +1697,7 @@ More info: https://examples.k8s.io/mysql-cinder-pd/README.md<br/>
         <td><b><a href="#spinappspecvolumesindexcsi">csi</a></b></td>
         <td>object</td>
         <td>
-          csi (Container Storage Interface) represents ephemeral storage that is handled by certain external CSI drivers (Beta feature).<br/>
+          csi (Container Storage Interface) represents ephemeral storage that is handled by certain external CSI drivers.<br/>
         </td>
         <td>false</td>
       </tr><tr>
@@ -1740,14 +1757,16 @@ persistent volumes at the same time.<br/>
         <td>object</td>
         <td>
           flexVolume represents a generic volume resource that is
-provisioned/attached using an exec based plugin.<br/>
+provisioned/attached using an exec based plugin.
+Deprecated: FlexVolume is deprecated. Consider using a CSIDriver instead.<br/>
         </td>
         <td>false</td>
       </tr><tr>
         <td><b><a href="#spinappspecvolumesindexflocker">flocker</a></b></td>
         <td>object</td>
         <td>
-          flocker represents a Flocker volume attached to a kubelet's host machine. This depends on the Flocker control service being running<br/>
+          flocker represents a Flocker volume attached to a kubelet's host machine. This depends on the Flocker control service being running.
+Deprecated: Flocker is deprecated and the in-tree flocker type is no longer supported.<br/>
         </td>
         <td>false</td>
       </tr><tr>
@@ -1756,6 +1775,8 @@ provisioned/attached using an exec based plugin.<br/>
         <td>
           gcePersistentDisk represents a GCE Disk resource that is attached to a
 kubelet's host machine and then exposed to the pod.
+Deprecated: GCEPersistentDisk is deprecated. All operations for the in-tree
+gcePersistentDisk type are redirected to the pd.csi.storage.gke.io CSI driver.
 More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk<br/>
         </td>
         <td>false</td>
@@ -1764,7 +1785,7 @@ More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
         <td>object</td>
         <td>
           gitRepo represents a git repository at a particular revision.
-DEPRECATED: GitRepo is deprecated. To provision a container with a git repo, mount an
+Deprecated: GitRepo is deprecated. To provision a container with a git repo, mount an
 EmptyDir into an InitContainer that clones the repo using git, then mount the EmptyDir
 into the Pod's container.<br/>
         </td>
@@ -1774,6 +1795,7 @@ into the Pod's container.<br/>
         <td>object</td>
         <td>
           glusterfs represents a Glusterfs mount on the host that shares a pod's lifetime.
+Deprecated: Glusterfs is deprecated and the in-tree glusterfs type is no longer supported.
 More info: https://examples.k8s.io/volumes/glusterfs/README.md<br/>
         </td>
         <td>false</td>
@@ -1838,14 +1860,18 @@ More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persis
         <td><b><a href="#spinappspecvolumesindexphotonpersistentdisk">photonPersistentDisk</a></b></td>
         <td>object</td>
         <td>
-          photonPersistentDisk represents a PhotonController persistent disk attached and mounted on kubelets host machine<br/>
+          photonPersistentDisk represents a PhotonController persistent disk attached and mounted on kubelets host machine.
+Deprecated: PhotonPersistentDisk is deprecated and the in-tree photonPersistentDisk type is no longer supported.<br/>
         </td>
         <td>false</td>
       </tr><tr>
         <td><b><a href="#spinappspecvolumesindexportworxvolume">portworxVolume</a></b></td>
         <td>object</td>
         <td>
-          portworxVolume represents a portworx volume attached and mounted on kubelets host machine<br/>
+          portworxVolume represents a portworx volume attached and mounted on kubelets host machine.
+Deprecated: PortworxVolume is deprecated. All operations for the in-tree portworxVolume type
+are redirected to the pxd.portworx.com CSI driver when the CSIMigrationPortworx feature-gate
+is on.<br/>
         </td>
         <td>false</td>
       </tr><tr>
@@ -1859,7 +1885,8 @@ More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persis
         <td><b><a href="#spinappspecvolumesindexquobyte">quobyte</a></b></td>
         <td>object</td>
         <td>
-          quobyte represents a Quobyte mount on the host that shares a pod's lifetime<br/>
+          quobyte represents a Quobyte mount on the host that shares a pod's lifetime.
+Deprecated: Quobyte is deprecated and the in-tree quobyte type is no longer supported.<br/>
         </td>
         <td>false</td>
       </tr><tr>
@@ -1867,6 +1894,7 @@ More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persis
         <td>object</td>
         <td>
           rbd represents a Rados Block Device mount on the host that shares a pod's lifetime.
+Deprecated: RBD is deprecated and the in-tree rbd type is no longer supported.
 More info: https://examples.k8s.io/volumes/rbd/README.md<br/>
         </td>
         <td>false</td>
@@ -1874,7 +1902,8 @@ More info: https://examples.k8s.io/volumes/rbd/README.md<br/>
         <td><b><a href="#spinappspecvolumesindexscaleio">scaleIO</a></b></td>
         <td>object</td>
         <td>
-          scaleIO represents a ScaleIO persistent volume attached and mounted on Kubernetes nodes.<br/>
+          scaleIO represents a ScaleIO persistent volume attached and mounted on Kubernetes nodes.
+Deprecated: ScaleIO is deprecated and the in-tree scaleIO type is no longer supported.<br/>
         </td>
         <td>false</td>
       </tr><tr>
@@ -1889,14 +1918,17 @@ More info: https://kubernetes.io/docs/concepts/storage/volumes#secret<br/>
         <td><b><a href="#spinappspecvolumesindexstorageos">storageos</a></b></td>
         <td>object</td>
         <td>
-          storageOS represents a StorageOS volume attached and mounted on Kubernetes nodes.<br/>
+          storageOS represents a StorageOS volume attached and mounted on Kubernetes nodes.
+Deprecated: StorageOS is deprecated and the in-tree storageos type is no longer supported.<br/>
         </td>
         <td>false</td>
       </tr><tr>
         <td><b><a href="#spinappspecvolumesindexvspherevolume">vsphereVolume</a></b></td>
         <td>object</td>
         <td>
-          vsphereVolume represents a vSphere volume attached and mounted on kubelets host machine<br/>
+          vsphereVolume represents a vSphere volume attached and mounted on kubelets host machine.
+Deprecated: VsphereVolume is deprecated. All operations for the in-tree vsphereVolume type
+are redirected to the csi.vsphere.vmware.com CSI driver.<br/>
         </td>
         <td>false</td>
       </tr></tbody>
@@ -1909,6 +1941,8 @@ More info: https://kubernetes.io/docs/concepts/storage/volumes#secret<br/>
 
 awsElasticBlockStore represents an AWS Disk resource that is attached to a
 kubelet's host machine and then exposed to the pod.
+Deprecated: AWSElasticBlockStore is deprecated. All operations for the in-tree
+awsElasticBlockStore type are redirected to the ebs.csi.aws.com CSI driver.
 More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
 
 <table>
@@ -1967,6 +2001,8 @@ More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockst
 
 
 azureDisk represents an Azure Data Disk mount on the host and bind mount to the pod.
+Deprecated: AzureDisk is deprecated. All operations for the in-tree azureDisk type
+are redirected to the disk.csi.azure.com CSI driver.
 
 <table>
     <thead>
@@ -2035,6 +2071,8 @@ the ReadOnly setting in VolumeMounts.<br/>
 
 
 azureFile represents an Azure File Service mount on the host and bind mount to the pod.
+Deprecated: AzureFile is deprecated. All operations for the in-tree azureFile type
+are redirected to the file.csi.azure.com CSI driver.
 
 <table>
     <thead>
@@ -2075,7 +2113,8 @@ the ReadOnly setting in VolumeMounts.<br/>
 <small>[back to parent](#spinappspecvolumesindex)</small>
 
 
-cephFS represents a Ceph FS mount on the host that shares a pod's lifetime
+cephFS represents a Ceph FS mount on the host that shares a pod's lifetime.
+Deprecated: CephFS is deprecated and the in-tree cephfs type is no longer supported.
 
 <table>
     <thead>
@@ -2176,6 +2215,8 @@ More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/nam
 
 
 cinder represents a cinder volume attached and mounted on kubelets host machine.
+Deprecated: Cinder is deprecated. All operations for the in-tree cinder type
+are redirected to the cinder.csi.openstack.org CSI driver.
 More info: https://examples.k8s.io/mysql-cinder-pd/README.md
 
 <table>
@@ -2380,7 +2421,7 @@ mode, like fsGroup, and the result can be other mode bits set.<br/>
 <small>[back to parent](#spinappspecvolumesindex)</small>
 
 
-csi (Container Storage Interface) represents ephemeral storage that is handled by certain external CSI drivers (Beta feature).
+csi (Container Storage Interface) represents ephemeral storage that is handled by certain external CSI drivers.
 
 <table>
     <thead>
@@ -3256,6 +3297,7 @@ Either wwids or combination of targetWWNs and lun must be set, but not both simu
 
 flexVolume represents a generic volume resource that is
 provisioned/attached using an exec based plugin.
+Deprecated: FlexVolume is deprecated. Consider using a CSIDriver instead.
 
 <table>
     <thead>
@@ -3352,7 +3394,8 @@ More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/nam
 <small>[back to parent](#spinappspecvolumesindex)</small>
 
 
-flocker represents a Flocker volume attached to a kubelet's host machine. This depends on the Flocker control service being running
+flocker represents a Flocker volume attached to a kubelet's host machine. This depends on the Flocker control service being running.
+Deprecated: Flocker is deprecated and the in-tree flocker type is no longer supported.
 
 <table>
     <thead>
@@ -3388,6 +3431,8 @@ should be considered as deprecated<br/>
 
 gcePersistentDisk represents a GCE Disk resource that is attached to a
 kubelet's host machine and then exposed to the pod.
+Deprecated: GCEPersistentDisk is deprecated. All operations for the in-tree
+gcePersistentDisk type are redirected to the pd.csi.storage.gke.io CSI driver.
 More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
 
 <table>
@@ -3448,7 +3493,7 @@ More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
 
 
 gitRepo represents a git repository at a particular revision.
-DEPRECATED: GitRepo is deprecated. To provision a container with a git repo, mount an
+Deprecated: GitRepo is deprecated. To provision a container with a git repo, mount an
 EmptyDir into an InitContainer that clones the repo using git, then mount the EmptyDir
 into the Pod's container.
 
@@ -3494,6 +3539,7 @@ the subdirectory with the given name.<br/>
 
 
 glusterfs represents a Glusterfs mount on the host that shares a pod's lifetime.
+Deprecated: Glusterfs is deprecated and the in-tree glusterfs type is no longer supported.
 More info: https://examples.k8s.io/volumes/glusterfs/README.md
 
 <table>
@@ -3859,7 +3905,8 @@ Default false.<br/>
 <small>[back to parent](#spinappspecvolumesindex)</small>
 
 
-photonPersistentDisk represents a PhotonController persistent disk attached and mounted on kubelets host machine
+photonPersistentDisk represents a PhotonController persistent disk attached and mounted on kubelets host machine.
+Deprecated: PhotonPersistentDisk is deprecated and the in-tree photonPersistentDisk type is no longer supported.
 
 <table>
     <thead>
@@ -3894,7 +3941,10 @@ Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.<br/>
 <small>[back to parent](#spinappspecvolumesindex)</small>
 
 
-portworxVolume represents a portworx volume attached and mounted on kubelets host machine
+portworxVolume represents a portworx volume attached and mounted on kubelets host machine.
+Deprecated: PortworxVolume is deprecated. All operations for the in-tree portworxVolume type
+are redirected to the pxd.portworx.com CSI driver when the CSIMigrationPortworx feature-gate
+is on.
 
 <table>
     <thead>
@@ -4614,7 +4664,8 @@ and must be at least 10 minutes.<br/>
 <small>[back to parent](#spinappspecvolumesindex)</small>
 
 
-quobyte represents a Quobyte mount on the host that shares a pod's lifetime
+quobyte represents a Quobyte mount on the host that shares a pod's lifetime.
+Deprecated: Quobyte is deprecated and the in-tree quobyte type is no longer supported.
 
 <table>
     <thead>
@@ -4682,6 +4733,7 @@ Defaults to serivceaccount user<br/>
 
 
 rbd represents a Rados Block Device mount on the host that shares a pod's lifetime.
+Deprecated: RBD is deprecated and the in-tree rbd type is no longer supported.
 More info: https://examples.k8s.io/volumes/rbd/README.md
 
 <table>
@@ -4815,6 +4867,7 @@ More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/nam
 
 
 scaleIO represents a ScaleIO persistent volume attached and mounted on Kubernetes nodes.
+Deprecated: ScaleIO is deprecated and the in-tree scaleIO type is no longer supported.
 
 <table>
     <thead>
@@ -5061,6 +5114,7 @@ mode, like fsGroup, and the result can be other mode bits set.<br/>
 
 
 storageOS represents a StorageOS volume attached and mounted on Kubernetes nodes.
+Deprecated: StorageOS is deprecated and the in-tree storageos type is no longer supported.
 
 <table>
     <thead>
@@ -5157,7 +5211,9 @@ More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/nam
 <small>[back to parent](#spinappspecvolumesindex)</small>
 
 
-vsphereVolume represents a vSphere volume attached and mounted on kubelets host machine
+vsphereVolume represents a vSphere volume attached and mounted on kubelets host machine.
+Deprecated: VsphereVolume is deprecated. All operations for the in-tree vsphereVolume type
+are redirected to the csi.vsphere.vmware.com CSI driver.
 
 <table>
     <thead>
