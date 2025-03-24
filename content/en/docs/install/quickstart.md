@@ -55,14 +55,14 @@ kubectl wait --for=condition=available --timeout=300s deployment/cert-manager-we
 > every node.
 
 ```console { data-plausible="copy-quick-apply-runtime-class" }
-kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.5.0/spin-operator.runtime-class.yaml
+kubectl apply -f https://github.com/spinframework/spin-operator/releases/download/v0.5.0/spin-operator.runtime-class.yaml
 ```
 
 4. Apply the [Custom Resource Definitions]({{< ref "glossary#custom-resource-definition-crd" >}})
    used by the Spin Operator:
 
 ```console { data-plausible="copy-quick-apply-crd" }
-kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.5.0/spin-operator.crds.yaml
+kubectl apply -f https://github.com/spinframework/spin-operator/releases/download/v0.5.0/spin-operator.crds.yaml
 ```
 
 ## Deploy the Spin Operator
@@ -79,13 +79,13 @@ helm install spin-operator \
   --create-namespace \
   --version 0.5.0 \
   --wait \
-  oci://ghcr.io/spinkube/charts/spin-operator
+  oci://ghcr.io/spinframework/charts/spin-operator
 ```
 
 Lastly, create the [shim executor]({{< ref "glossary#spin-app-executor-crd" >}}):
 
 ```console { data-plausible="copy-quick-create-shim-executor" }
-kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.5.0/spin-operator.shim-executor.yaml
+kubectl apply -f https://github.com/spinframework/spin-operator/releases/download/v0.5.0/spin-operator.shim-executor.yaml
 ```
 
 ## Run the Sample Application
@@ -95,7 +95,7 @@ You are now ready to deploy Spin applications onto the cluster!
 1. Create your first application in the same `spin-operator` namespace that the operator is running:
 
 ```console { data-plausible="copy-quick-deploy-sample" }
-kubectl apply -f https://raw.githubusercontent.com/spinkube/spin-operator/main/config/samples/simple.yaml
+kubectl apply -f https://raw.githubusercontent.com/spinframework/spin-operator/main/config/samples/simple.yaml
 ```
 
 2. Forward a local port to the application pod so that it can be reached:

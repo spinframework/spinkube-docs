@@ -74,10 +74,10 @@ Next, run the following commands to install the Spin [Runtime Class]({{<ref
 
 ```console
 # Install the RuntimeClass
-kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.5.0/spin-operator.runtime-class.yaml
+kubectl apply -f https://github.com/spinframework/spin-operator/releases/download/v0.5.0/spin-operator.runtime-class.yaml
 
 # Install the CRDs
-kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.5.0/spin-operator.crds.yaml
+kubectl apply -f https://github.com/spinframework/spin-operator/releases/download/v0.5.0/spin-operator.crds.yaml
 ```
 
 Lastly, install Spin Operator using `helm` and the [shim executor]({{< ref
@@ -90,10 +90,10 @@ helm install spin-operator \
   --create-namespace \
   --version 0.5.0 \
   --wait \
-  oci://ghcr.io/spinkube/charts/spin-operator
+  oci://ghcr.io/spinframework/charts/spin-operator
 
 # Install the shim executor
-kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.5.0/spin-operator.shim-executor.yaml
+kubectl apply -f https://github.com/spinframework/spin-operator/releases/download/v0.5.0/spin-operator.shim-executor.yaml
 ```
 
 Great, now you have Spin Operator up and running on your cluster. This means you’re set to create
@@ -158,7 +158,7 @@ below. As you can see, we have explicitly specified resource limits to `500m` of
 `SpinApp`:
 
 ```yaml
-# https://raw.githubusercontent.com/spinkube/spin-operator/main/config/samples/keda-app.yaml
+# https://raw.githubusercontent.com/spinframework/spin-operator/main/config/samples/keda-app.yaml
 apiVersion: core.spinkube.dev/v1alpha1
 kind: SpinApp
 metadata:
@@ -182,7 +182,7 @@ We will scale the instance count when we’ve reached a 50% utilization in `cpu`
 within the range of 1 (`spec.minReplicaCount`) and 20 (`spec.maxReplicaCount`).:
 
 ```yaml
-# https://raw.githubusercontent.com/spinkube/spin-operator/main/config/samples/keda-scaledobject.yaml
+# https://raw.githubusercontent.com/spinframework/spin-operator/main/config/samples/keda-scaledobject.yaml
 apiVersion: keda.sh/v1alpha1
 kind: ScaledObject
 metadata:
@@ -210,11 +210,11 @@ command:
 
 ```console
 # Deploy the SpinApp
-kubectl apply -f https://raw.githubusercontent.com/spinkube/spin-operator/main/config/samples/keda-app.yaml
+kubectl apply -f https://raw.githubusercontent.com/spinframework/spin-operator/main/config/samples/keda-app.yaml
 spinapp.core.spinkube.dev/keda-spinapp created
 
 # Deploy the ScaledObject
-kubectl apply -f https://raw.githubusercontent.com/spinkube/spin-operator/main/config/samples/keda-scaledobject.yaml
+kubectl apply -f https://raw.githubusercontent.com/spinframework/spin-operator/main/config/samples/keda-scaledobject.yaml
 scaledobject.keda.sh/cpu-scaling created
 ```
 

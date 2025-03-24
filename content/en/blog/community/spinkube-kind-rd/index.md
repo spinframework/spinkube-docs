@@ -232,7 +232,7 @@ kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.
 kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.1.0/spin-operator.crds.yaml
 
 # Deploy SpinKube
-helm install spin-operator --namespace spin-operator --create-namespace --version 0.1.0 --wait oci://ghcr.io/spinkube/charts/spin-operator
+helm install spin-operator --namespace spin-operator --create-namespace --version 0.1.0 --wait oci://ghcr.io/spinframework/charts/spin-operator
 
 # Install the App Executor
 kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.1.0/spin-operator.shim-executor.yaml
@@ -246,7 +246,7 @@ Same as the SpinKube deployment, you can follow the quickstart:
 
 ```shell
 # Deploy the application
-kubectl apply -f https://raw.githubusercontent.com/spinkube/spin-operator/main/config/samples/simple.yaml
+kubectl apply -f https://raw.githubusercontent.com/spinframework/spin-operator/main/config/samples/simple.yaml
 
 # Port forwarding
 kubectl port-forward svc/simple-spinapp 8083:80
