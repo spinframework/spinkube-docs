@@ -29,7 +29,7 @@ use to the widest audience.
 ## Code of Conduct
 
 As a contributor, you can help us keep the SpinKube community open and inclusive. Please read and
-follow our [Code of Conduct](https://github.com/spinkube/governance/blob/main/CODE_OF_CONDUCT.md).
+follow our [Code of Conduct](https://github.com/spinframework/governance/blob/main/CODE_OF_CONDUCT.md).
 
 ## Install git
 
@@ -48,8 +48,8 @@ installed) by typing `git help` into the command line.
 SpinKube is hosted on GitHub, and you'll need a GitHub account to contribute. If you don't have one,
 you can sign up for free at [GitHub](https://github.com).
 
-SpinKube's repositories are organized under the [spinkube GitHub
-organization](https://github.com/spinkube). Once you have an account, fork one of the repositories
+SpinKube's repositories are organized under the [spinframework GitHub
+organization](https://github.com/spinframework). Once you have an account, fork one of the repositories
 by visiting the repository's page and clicking "Fork" in the upper right corner.
 
 Then, from the command line, clone your fork of the repository. For example, if you forked the

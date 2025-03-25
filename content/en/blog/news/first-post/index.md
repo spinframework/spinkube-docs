@@ -85,9 +85,9 @@ Applications are primarily distributed as OCI Artifacts, rather than traditional
 meaning that you only ship your compiled application and its assets - without system dependencies.
 
 To execute those applications we have a [runwasi](https://github.com/containerd/runwasi) based
-[containerd-shim-spin](https://github.com/spinkube/containerd-shim-spin/) that takes a Spin app,
+[containerd-shim-spin](https://github.com/spinframework/containerd-shim-spin/) that takes a Spin app,
 [pre-compiles it for the specific
-architecture](https://github.com/spinkube/containerd-shim-spin/pull/32) (caching the result in the
+architecture](https://github.com/spinframework/containerd-shim-spin/pull/32) (caching the result in the
 containerd content store), and is then ready to service requests with [sub-millisecond startup
 times](https://fermyon.github.io/spin-benchmarks/criterion/reports/spin-executor_sleep-1ms/index.html)
 - no matter how long your application has been sitting idle.
@@ -124,7 +124,7 @@ Or in practice:
 This leaves one major area that can be painful when deploying applications to Kubernetes today: the
 developer and deployment experience.
 
-This is where [Spin][spin], [the `spin kube` plugin](https://github.com/spinkube/spin-plugin-kube),
+This is where [Spin][spin], [the `spin kube` plugin](https://github.com/spinframework/spin-plugin-kube),
 and [`spin-operator`][spin-operator] start to shine.
 
 ![Architecture diagram of the SpinKube project](spinkube-diagram.png)
@@ -161,9 +161,9 @@ kubectl apply -f app.yaml
 If you want to try things out yourself, the easiest way is to follow the [quickstart
 guide][quickstart] - we can’t wait to see what you build.
 
-[spin-operator]: https://github.com/spinkube/spin-operator
-[containerd-shim-spin]: https://github.com/spinkube/containerd-shim-spin
-[runtime-class-manager]: https://github.com/spinkube/runtime-class-manager
+[spin-operator]: https://github.com/spinframework/spin-operator
+[containerd-shim-spin]: https://github.com/spinframework/containerd-shim-spin
+[runtime-class-manager]: https://github.com/spinframework/runtime-class-manager
 [spin]: https://github.com/fermyon/spin
 [quickstart]: https://www.spinkube.dev/docs/spin-operator/quickstart/
 [kwasm]: https://kwasm.sh/

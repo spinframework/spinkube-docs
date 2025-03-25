@@ -24,7 +24,7 @@ For this tutorial, you’ll need:
 
 ## Scaffold a Specific Component from a Spin Application into a Custom Resource
 
-We’ll use a sample application called "Salutations", which demonstrates greetings via two components, each responding to a unique HTTP route. If we take a look at the [application manifest](https://github.com/spinkube/spin-operator/blob/main/apps/salutations/spin.toml), we’ll see that this Spin application is comprised of two components:
+We’ll use a sample application called "Salutations", which demonstrates greetings via two components, each responding to a unique HTTP route. If we take a look at the [application manifest](https://github.com/spinframework/spin-operator/blob/main/apps/salutations/spin.toml), we’ll see that this Spin application is comprised of two components:
 
 - `Hello` component triggered by the `/hi` route
 - `Goodbye` component triggered by the `/bye` route
@@ -61,9 +61,9 @@ command = "tinygo build -target=wasi -gc=leaking -no-debug -o main.wasm main.go"
 watch = ["**/*.go", "go.mod"]
 ```
 
-With Selective Deployments, you can choose to deploy only specific components without modifying the source code. For this example, we’ll deploy just the `hello` component.  
+With Selective Deployments, you can choose to deploy only specific components without modifying the source code. For this example, we’ll deploy just the `hello` component.
 
-> Note that if you had an Spin application with more than two components, you could choose to deploy multiple components selectively. 
+> Note that if you had an Spin application with more than two components, you could choose to deploy multiple components selectively.
 
 To Selectively Deploy, we first need to turn our application into a SpinApp Custom Resource with the `spin kube scaffold` command, using the optional `--component` field to specify which component we’d like to deploy:
 

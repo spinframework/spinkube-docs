@@ -8,7 +8,7 @@ aliases:
 ---
 
 See the following list of compatible Kubernetes distributions and platforms for running the [Spin
-Operator](https://github.com/spinkube/spin-operator/):
+Operator](https://github.com/spinframework/spin-operator/):
 
  - [Amazon Elastic Kubernetes Service (EKS)](https://docs.aws.amazon.com/eks/)
  - [Azure Kubernetes Service (AKS)](https://azure.microsoft.com/en-us/products/kubernetes-service)

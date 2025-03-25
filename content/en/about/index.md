@@ -18,7 +18,7 @@ SpinKube comprises the following open source projects.
 
 <u>**Containerd Shim Spin**</u>
 
-The [Containerd Shim Spin repository](https://github.com/spinkube/containerd-shim-spin) provides
+The [Containerd Shim Spin repository](https://github.com/spinframework/containerd-shim-spin) provides
 shim implementations for running WebAssembly ([Wasm](https://webassembly.org/)) / Wasm System
 Interface ([WASI](https://github.com/WebAssembly/WASI)) workloads using
 [runwasi](https://github.com/deislabs/runwasi) as a library, whereby workloads built using the [Spin
@@ -30,7 +30,7 @@ Kubernetes environment.
 <u>**Runtime Class Manager**</u>
 
 The [Runtime Class Manager, also known as the Containerd Shim Lifecycle
-Operator](https://github.com/spinkube/runtime-class-manager), is designed to automate and manage the
+Operator](https://github.com/spinframework/runtime-class-manager), is designed to automate and manage the
 lifecycle of containerd shims in a Kubernetes environment. This includes tasks like installation,
 update, removal, and configuration of shims, reducing manual errors and improving reliability in
 managing WebAssembly (Wasm) workloads and other containerd extensions.
@@ -39,7 +39,7 @@ managing WebAssembly (Wasm) workloads and other containerd extensions.
 
 <u>**Spin Plugin for Kubernetes**</u>
 
-The [Spin plugin for Kubernetes](https://github.com/spinkube/spin-plugin-kube), known as `spin
+The [Spin plugin for Kubernetes](https://github.com/spinframework/spin-plugin-kube), known as `spin
 kube`, faciliates the translation of existing [Spin
 applications](https://developer.fermyon.com/spin) into the Kubernetes custom resource that will be
 deployed and managed on your cluster. This plugin works by taking your spin application manifest and
@@ -50,7 +50,7 @@ Kubernetes to manage and run Wasm workloads in a way similar to traditional cont
 
 <u>**Spin Operator**</u>
 
-The [Spin Operator](https://github.com/spinkube/spin-operator/) enables deploying Spin applications
+The [Spin Operator](https://github.com/spinframework/spin-operator/) enables deploying Spin applications
 to Kubernetes. The foundation of this project is built using the
 [kubebuilder](https://github.com/kubernetes-sigs/kubebuilder) framework. Spin Operator defines Spin
 App Custom Resource Definitions (CRDs). Spin Operator watches SpinApp Custom Resources e.g. Spin app

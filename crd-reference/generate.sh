@@ -16,7 +16,7 @@ go install fybrik.io/crdoc@latest
 
 echo "Downloading Spin Operator CRDs ($SPIN_OPERATOR_RELEASE)"
 spin_operator_crds_file=$(mktemp)
-wget https://github.com/spinkube/spin-operator/releases/download/$SPIN_OPERATOR_RELEASE/spin-operator.crds.yaml -O ${spin_operator_crds_file}
+wget https://github.com/spinframework/spin-operator/releases/download/$SPIN_OPERATOR_RELEASE/spin-operator.crds.yaml -O ${spin_operator_crds_file}
 
 # Generate SpinAppExecutor Reference Docs
 echo "Generating CRD reference docs for SpinAppExecutor"

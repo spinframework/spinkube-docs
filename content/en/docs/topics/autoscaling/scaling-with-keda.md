@@ -31,7 +31,7 @@ Please ensure the following tools are installed on your local machine:
 ## Setting Up Kubernetes Cluster
 
 Run the following command to create a Kubernetes cluster that has [the
-containerd-shim-spin](https://github.com/spinkube/containerd-shim-spin) pre-requisites installed: If
+containerd-shim-spin](https://github.com/spinframework/containerd-shim-spin) pre-requisites installed: If
 you have a Kubernetes cluster already, please feel free to use it:
 
 ```console
@@ -149,7 +149,7 @@ helm install keda kedacore/keda --namespace keda --create-namespace
 
 Next up we’re going to deploy the Spin App we will be scaling. You can find the source code of the
 Spin App in the
-[apps/cpu-load-gen](https://github.com/spinkube/spin-operator/tree/main/apps/cpu-load-gen) folder of
+[apps/cpu-load-gen](https://github.com/spinframework/spin-operator/tree/main/apps/cpu-load-gen) folder of
 the Spin Operator repository.
 
 We can take a look at the `SpinApp` and the KEDA `ScaledObject` definitions in our deployment files

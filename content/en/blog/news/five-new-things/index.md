@@ -10,11 +10,11 @@ resources:
     title: "Image #:counter"
 ---
 
-Since we publicly [released](/blog/2024/03/13/introducing-spinkube/) SpinKube in March we've been hard at work steadily making it better. Spin Operator [`v0.4.0`](https://github.com/spinkube/spin-operator/releases/tag/v0.4.0), Containerd shim for Spin [`v0.17.0`](https://github.com/spinkube/containerd-shim-spin/releases/tag/v0.17.0), and `spin kube` plugin [`v0.3.0`](https://github.com/spinkube/spin-plugin-kube/releases/tag/v0.3.0) have all just been released. To celebrate that, here's five new things in SpinKube you should know about.
+Since we publicly [released](/blog/2024/03/13/introducing-spinkube/) SpinKube in March we've been hard at work steadily making it better. Spin Operator [`v0.4.0`](https://github.com/spinframework/spin-operator/releases/tag/v0.4.0), Containerd shim for Spin [`v0.17.0`](https://github.com/spinframework/containerd-shim-spin/releases/tag/v0.17.0), and `spin kube` plugin [`v0.3.0`](https://github.com/spinframework/spin-plugin-kube/releases/tag/v0.3.0) have all just been released. To celebrate that, here's five new things in SpinKube you should know about.
 
 ## Selective Deployments
 
-SpinKube now supports selectively deploying a subset of a Spin apps components. Consider this simple example Spin application (named salutation in the [example repo](https://github.com/spinkube/spin-operator/tree/main/apps/salutations)) composed of two HTTP-triggered components: `hello` and `goodbye`. In the newly added `components` field you can select which components you would like to be a part of the deployment. Here's an example of what the YAML for a selectively deployed app might look like:
+SpinKube now supports selectively deploying a subset of a Spin apps components. Consider this simple example Spin application (named salutation in the [example repo](https://github.com/spinframework/spin-operator/tree/main/apps/salutations)) composed of two HTTP-triggered components: `hello` and `goodbye`. In the newly added `components` field you can select which components you would like to be a part of the deployment. Here's an example of what the YAML for a selectively deployed app might look like:
 
 ```yaml
 apiVersion: core.spinkube.dev/v1alpha1
@@ -59,7 +59,7 @@ Now any Spin apps using this executor will send telemetry to the collector at `o
 
 ## MQTT Trigger Support
 
-The Containerd Shim for Spin has added support for [MQTT triggers](https://github.com/spinkube/spin-trigger-mqtt). [MQTT](https://mqtt.org/) is a lightweight, publish-subscribe messaging protocol that enables devices to send and receive messages through a broker. It's used all over the place to enable Internet of Things (IoT) designs.
+The Containerd Shim for Spin has added support for [MQTT triggers](https://github.com/spinframework/spin-trigger-mqtt). [MQTT](https://mqtt.org/) is a lightweight, publish-subscribe messaging protocol that enables devices to send and receive messages through a broker. It's used all over the place to enable Internet of Things (IoT) designs.
 
 If you want to learn more about how to use this new trigger checkout this [blog post](https://www.fermyon.com/blog/mqtt_trigger_spinkube) by Kate Goldenring.
 
@@ -111,4 +111,4 @@ One more example of SpinKube's growing stability is the domain migration we've c
 
 We hope this has gotten you as excited about SpinKube as we are. Stay tuned as we continue to make SpinKube better. If you'd like to get involved in the community we'd love to have you — check out our [community page](https://www.spinkube.dev/community/).
 
-[^1]: This was also a great opportunity to exercise the [SKIP](https://github.com/spinkube/skips/tree/main/proposals/004-crd-domains) (SpinKube Improvement Proposal) process.
+[^1]: This was also a great opportunity to exercise the [SKIP](https://github.com/spinframework/skips/tree/main/proposals/004-crd-domains) (SpinKube Improvement Proposal) process.

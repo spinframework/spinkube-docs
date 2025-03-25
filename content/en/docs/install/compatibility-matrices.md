@@ -8,13 +8,13 @@ tags: [reference]
 
 ## `containerd-shim-spin` Executor
 
-The [Spin containerd shim](https://github.com/spinkube/containerd-shim-spin) project is a containerd shim implementation for Spin.
+The [Spin containerd shim](https://github.com/spinframework/containerd-shim-spin) project is a containerd shim implementation for Spin.
 
 ### Spin Operator and Shim Feature Map
 
 If a feature is configured in a `SpinApp` that is not supported in the version of the shim being
 used, the application may not execute as expected. The following maps out the versions of the [Spin
-containerd shim](https://github.com/spinkube/containerd-shim-spin), Spin Operator, and `spin kube`
+containerd shim](https://github.com/spinframework/containerd-shim-spin), Spin Operator, and `spin kube`
 plugin that have support for specific features.
 
 | Feature | SpinApp field | Shim Version | Spin Operator Version | `spin kube` plugin version |
@@ -28,7 +28,7 @@ plugin that have support for specific features.
 
 For tracking the availability of Spin features and compatibility of Spin SDKs, the following
 indicates which versions of the Spin runtime the [Spin containerd
-shim](https://github.com/spinkube/containerd-shim-spin) uses.
+shim](https://github.com/spinframework/containerd-shim-spin) uses.
 
 | **shim version** | v0.12.0                                                       | v0.13.0                                                       | v0.14.0                                                       | v0.14.1                                                       | v0.15.0                                                       | v0.15.1                                                       | v0.16.0                                                       | v0.17.0 | v0.18.0 |
 |------------------|---------------------------------------------------------------|---------------------------------------------------------------|---------------------------------------------------------------|---------------------------------------------------------------|---------------------------------------------------------------|---------------------------------------------------------------|---------------------------------------------------------------|---------------------------------------------------------------|-------------------------------|

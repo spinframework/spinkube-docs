@@ -25,7 +25,7 @@ For this Quickstart guide, you will need:
 ### Set up Your Kubernetes Cluster
 
 1. Create a Kubernetes cluster with a k3d image that includes the
-   [containerd-shim-spin](https://github.com/spinkube/containerd-shim-spin) prerequisite already
+   [containerd-shim-spin](https://github.com/spinframework/containerd-shim-spin) prerequisite already
    installed:
 
 ```console { data-plausible="copy-quick-create-k3d" }
@@ -47,7 +47,7 @@ kubectl wait --for=condition=available --timeout=300s deployment/cert-manager-we
 ```
 
 3. Apply the [Runtime
-   Class](https://github.com/spinkube/spin-operator/blob/main/config/samples/spin-runtime-class.yaml)
+   Class](https://github.com/spinframework/spin-operator/blob/main/config/samples/spin-runtime-class.yaml)
    used for scheduling Spin apps onto nodes running the shim:
 
 > Note: In a production cluster you likely want to customize the Runtime Class with a `nodeSelector`

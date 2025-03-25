@@ -52,5 +52,5 @@ installation is commonly used to test in-flight changes. For a user, installing 
 Spin's plugin manager is better.
 
 Please refer to the [spin-plugin-kube GitHub
-repository](https://github.com/spinkube/spin-plugin-kube) for instructions on how to compile the
+repository](https://github.com/spinframework/spin-plugin-kube) for instructions on how to compile the
 plugin from source.

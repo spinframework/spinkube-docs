@@ -6,7 +6,7 @@ weight: 80
 
 ## spin-operator
 
-[Spin Operator](https://github.com/spinkube/spin-operator/) is a [Kubernetes
+[Spin Operator](https://github.com/spinframework/spin-operator/) is a [Kubernetes
 operator](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/) which empowers platform
 engineers to deploy [Spin applications](https://developer.fermyon.com/spin) as custom resources to
 their Kubernetes clusters. Spin Operator provides an elegant solution for platform engineers looking
@@ -45,7 +45,7 @@ via the Runtime Class Manager, which you will install as a dependency when setti
 
 ## containerd-shim-spin
 
-The [`containerd-shim-spin`](https://github.com/spinkube/containerd-shim-spin) is a [containerd
+The [`containerd-shim-spin`](https://github.com/spinframework/containerd-shim-spin) is a [containerd
 shim](https://github.com/containerd/containerd/blob/main/core/runtime/v2/README.md#runtime-shim)
 implementation for [Spin](https://developer.fermyon.com/spin), which enables running Spin workloads
 on Kubernetes via [runwasi](https://github.com/deislabs/runwasi). This means that by installing this
@@ -70,7 +70,7 @@ into Kubernetes clusters, enhancing the versatility and capabilities of containe
 ## runtime-class-manager
 
 The [Runtime Class Manager, also known as the Containerd Shim Lifecycle
-Operator](https://github.com/spinkube/runtime-class-manager), is designed to automate and manage the
+Operator](https://github.com/spinframework/runtime-class-manager), is designed to automate and manage the
 lifecycle of containerd shims in a Kubernetes environment. This includes tasks like installation,
 update, removal, and configuration of shims, reducing manual errors and improving reliability in
 managing WebAssembly (Wasm) workloads and other containerd extensions.
@@ -83,7 +83,7 @@ and simplifies the deployment and management of containerd shims in Kubernetes c
 
 ## spin-plugin-kube
 
-The [Kubernetes plugin for Spin](https://github.com/spinkube/spin-plugin-kube) is designed to
+The [Kubernetes plugin for Spin](https://github.com/spinframework/spin-plugin-kube) is designed to
 enhance Spin by enabling the execution of Wasm modules directly within a Kubernetes cluster.
 Specifically a tool designed for Kubernetes integration with the Spin command-line interface. This
 plugin works by integrating with containerd shims, allowing Kubernetes to manage and run Wasm

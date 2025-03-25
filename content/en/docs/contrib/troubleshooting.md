@@ -11,7 +11,7 @@ might assist you with your work.
 
 ## SpinKube Support Policy
 
-SpinKube provides support on a best-effort basis. For users who installed SpinKube manually following the documentation, please report issues in the [Spin Operator repository](https://github.com/spinframework/spin-operator/issues/new). For installations via the Azure Marketplace, please open an issue in the [Azure repository](https://github.com/spinkube/azure/issues/new) for assistance. If your issue is urgent, feel free to raise it in [Slack](https://cloud-native.slack.com/archives/C06PC7JA1EE).
+SpinKube provides support on a best-effort basis. For users who installed SpinKube manually following the documentation, please report issues in the [Spin Operator repository](https://github.com/spinframework/spin-operator/issues/new). For installations via the Azure Marketplace, please open an issue in the [Azure repository](https://github.com/spinframework/azure/issues/new) for assistance. If your issue is urgent, feel free to raise it in [Slack](https://cloud-native.slack.com/archives/C06PC7JA1EE).
 
 ## Failure downloading the Helm chart
 
