@@ -25,7 +25,7 @@ For this Quickstart guide, you will need:
 ### Set up Your Kubernetes Cluster
 
 1. Create a Kubernetes cluster with a k3d image that includes the
-   [containerd-shim-spin](https://github.com/spinkube/containerd-shim-spin) prerequisite already
+   [containerd-shim-spin](https://github.com/spinframework/containerd-shim-spin) prerequisite already
    installed:
 
 ```console { data-plausible="copy-quick-create-k3d" }
@@ -47,7 +47,7 @@ kubectl wait --for=condition=available --timeout=300s deployment/cert-manager-we
 ```
 
 3. Apply the [Runtime
-   Class](https://github.com/spinkube/spin-operator/blob/main/config/samples/spin-runtime-class.yaml)
+   Class](https://github.com/spinframework/spin-operator/blob/main/config/samples/spin-runtime-class.yaml)
    used for scheduling Spin apps onto nodes running the shim:
 
 > Note: In a production cluster you likely want to customize the Runtime Class with a `nodeSelector`
@@ -55,14 +55,14 @@ kubectl wait --for=condition=available --timeout=300s deployment/cert-manager-we
 > every node.
 
 ```console { data-plausible="copy-quick-apply-runtime-class" }
-kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.4.0/spin-operator.runtime-class.yaml
+kubectl apply -f https://github.com/spinframework/spin-operator/releases/download/v0.5.0/spin-operator.runtime-class.yaml
 ```
 
 4. Apply the [Custom Resource Definitions]({{< ref "glossary#custom-resource-definition-crd" >}})
    used by the Spin Operator:
 
 ```console { data-plausible="copy-quick-apply-crd" }
-kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.4.0/spin-operator.crds.yaml
+kubectl apply -f https://github.com/spinframework/spin-operator/releases/download/v0.5.0/spin-operator.crds.yaml
 ```
 
 ## Deploy the Spin Operator
@@ -77,15 +77,15 @@ and pods are spinning up.
 helm install spin-operator \
   --namespace spin-operator \
   --create-namespace \
-  --version 0.4.0 \
+  --version 0.5.0 \
   --wait \
-  oci://ghcr.io/spinkube/charts/spin-operator
+  oci://ghcr.io/spinframework/charts/spin-operator
 ```
 
 Lastly, create the [shim executor]({{< ref "glossary#spin-app-executor-crd" >}}):
 
 ```console { data-plausible="copy-quick-create-shim-executor" }
-kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.4.0/spin-operator.shim-executor.yaml
+kubectl apply -f https://github.com/spinframework/spin-operator/releases/download/v0.5.0/spin-operator.shim-executor.yaml
 ```
 
 ## Run the Sample Application
@@ -95,7 +95,7 @@ You are now ready to deploy Spin applications onto the cluster!
 1. Create your first application in the same `spin-operator` namespace that the operator is running:
 
 ```console { data-plausible="copy-quick-deploy-sample" }
-kubectl apply -f https://raw.githubusercontent.com/spinkube/spin-operator/main/config/samples/simple.yaml
+kubectl apply -f https://raw.githubusercontent.com/spinframework/spin-operator/main/config/samples/simple.yaml
 ```
 
 2. Forward a local port to the application pod so that it can be reached:

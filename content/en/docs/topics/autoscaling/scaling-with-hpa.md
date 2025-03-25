@@ -31,7 +31,7 @@ Ensure you have the following tools installed:
 ## Setting Up Kubernetes Cluster
 
 Run the following command to create a Kubernetes cluster that has [the
-containerd-shim-spin](https://github.com/spinkube/containerd-shim-spin) pre-requisites installed: If
+containerd-shim-spin](https://github.com/spinframework/containerd-shim-spin) pre-requisites installed: If
 you have a Kubernetes cluster already, please feel free to use it:
 
 ```console
@@ -74,10 +74,10 @@ Next, run the following commands to install the Spin [Runtime Class]({{<ref
 
 ```console
 # Install the RuntimeClass
-kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.4.0/spin-operator.runtime-class.yaml
+kubectl apply -f https://github.com/spinframework/spin-operator/releases/download/v0.5.0/spin-operator.runtime-class.yaml
 
 # Install the CRDs
-kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.4.0/spin-operator.crds.yaml
+kubectl apply -f https://github.com/spinframework/spin-operator/releases/download/v0.5.0/spin-operator.crds.yaml
 ```
 
 Lastly, install Spin Operator using `helm` and the [shim executor]({{< ref
@@ -88,12 +88,12 @@ Lastly, install Spin Operator using `helm` and the [shim executor]({{< ref
 helm install spin-operator \
   --namespace spin-operator \
   --create-namespace \
-  --version 0.4.0 \
+  --version 0.5.0 \
   --wait \
-  oci://ghcr.io/spinkube/charts/spin-operator
+  oci://ghcr.io/spinframework/charts/spin-operator
 
 # Install the shim executor
-kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.4.0/spin-operator.shim-executor.yaml
+kubectl apply -f https://github.com/spinframework/spin-operator/releases/download/v0.5.0/spin-operator.shim-executor.yaml
 ```
 
 Great, now you have Spin Operator up and running on your cluster. This means you’re set to create
@@ -133,7 +133,7 @@ Hit enter to create the ingress resource.
 
 Next up we’re going to deploy the Spin App we will be scaling. You can find the source code of the
 Spin App in the
-[apps/cpu-load-gen](https://github.com/spinkube/spin-operator/tree/main/apps/cpu-load-gen) folder of
+[apps/cpu-load-gen](https://github.com/spinframework/spin-operator/tree/main/apps/cpu-load-gen) folder of
 the Spin Operator repository.
 
 We can take a look at the SpinApp and HPA definitions in our deployment file below/. As you can see,
@@ -232,7 +232,7 @@ configuration). To apply the above configuration we use the following `kubectl a
 
 ```console
 # Install SpinApp and HPA
-kubectl apply -f https://raw.githubusercontent.com/spinkube/spin-operator/main/config/samples/hpa.yaml
+kubectl apply -f https://raw.githubusercontent.com/spinframework/spin-operator/main/config/samples/hpa.yaml
 ```
 
 You can see your running Spin application by running the following command:

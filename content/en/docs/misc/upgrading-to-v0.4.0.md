@@ -43,11 +43,11 @@ Spin Operator v0.4.0 introduces a breaking API change. The SpinApp and SpinAppEx
    ```
 6. Install the new CRDs.
    ```sh
-   kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.4.0/spin-operator.crds.yaml
+   kubectl apply -f https://github.com/spinframework/spin-operator/releases/download/v0.4.0/spin-operator.crds.yaml
    ```
 7. Re-install the SpinAppExecutor.
    ```sh
-   kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.4.0/spin-operator.shim-executor.yaml
+   kubectl apply -f https://github.com/spinframework/spin-operator/releases/download/v0.4.0/spin-operator.shim-executor.yaml
    ```
    If you had other executors you'll need to install them too.
 8. Install the new Spin Operator.

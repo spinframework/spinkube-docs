@@ -226,16 +226,16 @@ the steps below will only include short descriptions:
 kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.14.3/cert-manager.yaml
 
 # Install the Runtime Class
-kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.1.0/spin-operator.runtime-class.yaml
+kubectl apply -f https://github.com/spinframework/spin-operator/releases/download/v0.1.0/spin-operator.runtime-class.yaml
 
 # Install the CRD
-kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.1.0/spin-operator.crds.yaml
+kubectl apply -f https://github.com/spinframework/spin-operator/releases/download/v0.1.0/spin-operator.crds.yaml
 
 # Deploy SpinKube
-helm install spin-operator --namespace spin-operator --create-namespace --version 0.1.0 --wait oci://ghcr.io/spinkube/charts/spin-operator
+helm install spin-operator --namespace spin-operator --create-namespace --version 0.1.0 --wait oci://ghcr.io/spinframework/charts/spin-operator
 
 # Install the App Executor
-kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.1.0/spin-operator.shim-executor.yaml
+kubectl apply -f https://github.com/spinframework/spin-operator/releases/download/v0.1.0/spin-operator.shim-executor.yaml
 ```
 
 SpinKube is now deployed and you can run your first application as described below.
@@ -246,7 +246,7 @@ Same as the SpinKube deployment, you can follow the quickstart:
 
 ```shell
 # Deploy the application
-kubectl apply -f https://raw.githubusercontent.com/spinkube/spin-operator/main/config/samples/simple.yaml
+kubectl apply -f https://raw.githubusercontent.com/spinframework/spin-operator/main/config/samples/simple.yaml
 
 # Port forwarding
 kubectl port-forward svc/simple-spinapp 8083:80

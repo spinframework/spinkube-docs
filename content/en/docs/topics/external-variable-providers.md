@@ -25,7 +25,7 @@ To follow along with this tutorial, you'll need:
 - The [kubectl CLI](https://kubernetes.io/docs/tasks/tools/#kubectl)
 - The [spin CLI](https://developer.fermyon.com/spin/v2/install )
 - The [kube plugin for
-  Spin](https://github.com/spinkube/spin-plugin-kube?tab=readme-ov-file#install)
+  Spin](https://github.com/spinframework/spin-plugin-kube?tab=readme-ov-file#install)
 
 ## Supported providers
 
@@ -61,7 +61,7 @@ This guide assumes you have:
 ### Build and publish the Spin application
 
 We'll use the [variable explorer
-app](https://github.com/spinkube/spin-operator/tree/main/apps/variable-explorer) to test this
+app](https://github.com/spinframework/spin-operator/tree/main/apps/variable-explorer) to test this
 integration.
 
 First, clone the repository locally and navigate to the `variable-explorer` directory:

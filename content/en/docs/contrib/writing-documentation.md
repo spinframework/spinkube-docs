@@ -32,7 +32,7 @@ lightly-formatted plain-text documentation is transformed into HTML through a pr
 
 If you want to run your own local Hugo server to preview your changes as you work:
 
-1. Fork the [`spinkube/documentation`](https://github.com/spinkube/documentation) repository on
+1. Fork the [`spinframework/spinkube-docs`](https://github.com/spinframework/spinkube-docs) repository on
    GitHub.
 1. Clone your fork to your computer.
 1. Read the `README.md` file for instructions on how to build the site from source.
@@ -53,6 +53,6 @@ a shortcut for you:
 ## Filing issues
 
 If you've found a problem in the documentation, but you're not sure how to fix it yourself, please
-file an issue in the [documentation repository](https://github.com/spinkube/documentation/issues).
+file an issue in the [documentation repository](https://github.com/spinframework/spinkube-docs/issues).
 You can also file an issue about a specific page by clicking the **Create Issue** button in the top
 right-hand corner of the page.

@@ -24,7 +24,7 @@ process of assigning variables to your `SpinApp`.
 
 We’re going to build the SpinApp and store it inside of a [ttl.sh](http://ttl.sh) registry. Move
 into the
-[apps/variable-explorer](https://github.com/spinkube/spin-operator/blob/main/apps/variable-explorer)
+[apps/variable-explorer](https://github.com/spinframework/spin-operator/blob/main/apps/variable-explorer)
 directory and build the SpinApp we’ve provided:
 
 ```bash
@@ -39,7 +39,7 @@ indicates how long the image will last e.g. `1h` (1 hour). The maximum is `24h` 
 repush if ttl exceeds 24 hours.
 
 For demonstration purposes, we use the [variable
-explorer](https://github.com/spinkube/spin-operator/blob/main/apps/variable-explorer) sample app. It
+explorer](https://github.com/spinframework/spin-operator/blob/main/apps/variable-explorer) sample app. It
 reads three different variables (`log_level`, `platform_name` and `db_password`) and prints their
 values to the `STDOUT` stream as shown in the following snippet:
 
