@@ -1,4 +1,4 @@
-module github.com/spinkube/documentation
+module github.com/spinframework/spinkube-docs
 
 go 1.22
 

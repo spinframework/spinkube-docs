@@ -1,6 +1,6 @@
 # spinkube.dev
 
-![Status badge: Deploy to Github Pages](https://github.com/spinkube/documentation/actions/workflows/deploy.yaml/badge.svg)
+![Status badge: Deploy to Github Pages](https://github.com/spinframework/spinkube-docs/actions/workflows/deploy.yaml/badge.svg)
 
 This project contains the source code for spinkube.dev.
 

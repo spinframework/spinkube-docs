@@ -3,11 +3,11 @@
   "version": "0.1.0",
   "version.next": "0.1.1-dev.0-unreleased",
   "description": "Documentation website for SpinKube projects",
-  "repository": "github:spinkube/documentation",
+  "repository": "github:spinframework/spinkube-docs",
   "homepage": "https://spinkube.dev",
   "author": "SpinKube maintainers",
   "license": "Apache-2.0",
-  "bugs": "https://github.com/spinkube/documentation/issues",
+  "bugs": "https://github.com/spinframework/spinkube-docs/issues",
   "spelling": "cSpell:ignore HTMLTEST precheck postbuild -",
   "scripts": {
     "_build": "npm run _hugo-dev --",
