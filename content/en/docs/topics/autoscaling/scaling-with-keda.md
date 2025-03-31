@@ -36,7 +36,7 @@ you have a Kubernetes cluster already, please feel free to use it:
 
 ```console
 k3d cluster create wasm-cluster-scale \
-  --image ghcr.io/spinkube/containerd-shim-spin/k3d:v0.18.0 \
+  --image ghcr.io/spinframework/containerd-shim-spin/k3d:v0.19.0 \
   -p "8081:80@loadbalancer" \
   --agents 2
 ```

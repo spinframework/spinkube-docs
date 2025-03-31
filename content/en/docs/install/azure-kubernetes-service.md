@@ -125,7 +125,7 @@ helm install \
   kwasm-operator kwasm/kwasm-operator \
   --namespace kwasm \
   --create-namespace \
-  --set kwasmOperator.installerImage=ghcr.io/spinkube/containerd-shim-spin/node-installer:v0.18.0
+  --set kwasmOperator.installerImage=ghcr.io/spinframework/containerd-shim-spin/node-installer:v0.19.0
 
 # Provision Nodes
 kubectl annotate node --all kwasm.sh/kwasm-node=true
