@@ -78,7 +78,7 @@ We then need to install KWasm because it is not yet included with Microk8s:
 
 ```console { data-plausible="copy-quick-deploy-sample" }
 $ microk8s helm repo add kwasm http://kwasm.sh/kwasm-operator/
-$ microk8s helm install kwasm-operator kwasm/kwasm-operator --namespace kwasm --create-namespace --set kwasmOperator.installerImage=ghcr.io/spinkube/containerd-shim-spin/node-installer:v0.18.0
+$ microk8s helm install kwasm-operator kwasm/kwasm-operator --namespace kwasm --create-namespace --set kwasmOperator.installerImage=ghcr.io/spinframework/containerd-shim-spin/node-installer:v0.19.0
 $ microk8s kubectl annotate node --all kwasm.sh/kwasm-node=true
 
 ```
