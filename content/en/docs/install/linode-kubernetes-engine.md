@@ -10,8 +10,8 @@ Engine (LKE).
 
 ## Prerequisites
 
-This guide assumes that you have an Akamai Linode account that is configured and has sufficient
-permissions for creating a new LKE cluster.
+This guide assumes that you have an [Akamai Linode](https://login.linode.com/) account that is
+configured and has sufficient permissions for creating a new LKE cluster.
 
 You will also need recent versions of `kubectl` and `helm` installed on your system.
 
@@ -30,17 +30,19 @@ In the Linode web console, click on `Kubernetes` in the right-hand navigation, a
 ![LKE Creation Screen Described Below](../lke-spinkube-create.png)
 
 You will only need to make a few choices on this screen. Here's what we have done:
-* We named the cluster `spinkube-lke-1`. You should name it according to whatever convention you
-  prefer
-* We chose the `Chicago, IL (us-ord)` region, but you can choose any region you prefer
-* The latest supported Kubernetes version is `1.30`, so we chose that
-* For this testing cluster, we chose `No` on `HA Control Plane` because we do not need high
-  availability
-* In `Add Node Pools`, we added two `Dedicated 4 GB` simply to show a cluster running more than one
-  node. Two nodes is sufficient for Spin apps, though you may prefer the more traditional 3 node
-  cluster. Click `Add` to add these, and ignore the warning about minimum sizes.
 
-Once you have set things to your liking, press `Create Cluster`.
+* **Cluster name**: We named the cluster `spinkube-lke-1`. You should name it according to whatever
+  convention you prefer.
+* **Region**: We chose the `Chicago, IL (us-ord)` region, but you can choose any region you prefer.
+* **Kubernetes Version**: The latest supported Kubernetes version is `1.30`, so we chose that.
+* **High Availability Control Plane**: For this testing cluster, we chose `No` on `HA Control Plane`
+  because we do not need high availability.
+* **Node Pool configuration**: In `Add Node Pools`, we added two `Dedicated 4 GB` simply to show a
+  cluster running more than one node. Two nodes is sufficient for Spin apps, though you may prefer
+  the more traditional 3 node cluster. Click `Add` to add these, and ignore the warning about
+  minimum sizes.
+
+Once you have set things to your liking, click `Create Cluster`.
 
 This will take you to a screen that shows the status of the cluster. Initially, you will want to
 wait for all of your `Node Pool` to start up. Once all of the nodes are online, download the
