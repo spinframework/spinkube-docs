@@ -4,6 +4,7 @@ description: A set of compatibility matrices for each SpinKube executor
 date: 2024-11-08
 categories: [Spin Operator]
 tags: [reference]
+weight: 99
 ---
 
 ## `containerd-shim-spin` Executor

@@ -4,6 +4,7 @@ description: In this tutorial you'll learn how to deploy SpinKube on Azure Kuber
 date: 2024-02-16
 categories: [Spin Operator]
 tags: [Tutorials]
+weight: 5
 aliases:
   - /docs/spin-operator/tutorials/deploy-on-azure-kubernetes-service
 ---
