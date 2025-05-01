@@ -3,6 +3,7 @@ title: Installing on Linode Kubernetes Engine (LKE)
 description: This guide walks you through the process of installing SpinKube on [LKE](https://www.linode.com/docs/products/compute/kubernetes/).
 date: 2024-07-23
 tags: [Installation]
+weight: 6
 ---
 
 This guide walks through the process of installing and configuring SpinKube on Linode Kubernetes

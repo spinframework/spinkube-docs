@@ -3,6 +3,7 @@ title: Installing the `spin kube` plugin
 description: Learn how to install the `kube` plugin.
 categories: [guides]
 tags: [plugins, kubernetes, spin]
+weight: 3
 aliases:
 - /docs/spin-plugin-kube/installation
 ---

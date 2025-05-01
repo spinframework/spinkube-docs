@@ -3,6 +3,7 @@ title: Installing on Microk8s
 description: This guide walks you through the process of installing SpinKube using [Microk8s](https://microk8s.io/).
 date: 2024-06-19
 tags: [Installation]
+weight: 8
 ---
 
 This guide walks through the process of installing and configuring Microk8s and SpinKube.

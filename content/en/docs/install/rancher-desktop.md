@@ -4,6 +4,7 @@ description: This tutorial shows how to integrate SpinKube and Rancher Desktop.
 date: 2024-02-16
 categories: [Spin Operator]
 tags: [Tutorials]
+weight: 7
 aliases:
 - /docs/spin-operator/tutorials/integrating-with-rancher-desktop
 ---
