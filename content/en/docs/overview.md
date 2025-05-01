@@ -8,12 +8,11 @@ tags: []
 
 # Project Overview
 
-[SpinKube](https://github.com/spinframework) is a new open source project that streamlines the experience
-of developing, deploying, and operating Wasm workloads on Kubernetes, using
-[Spin](https://github.com/fermyon/spin) in tandem with the
+[SpinKube](https://github.com/spinframework) is an open source project that streamlines the
+experience of deploying and operating Wasm workloads on Kubernetes, using [Spin
+Operator](https://github.com/spinframework/spin-operator) in tandem with
 [runwasi](https://github.com/containerd/runwasi) and [runtime class
-manager](https://github.com/spinframework/runtime-class-manager) (formerly [KWasm](https://kwasm.sh/))
-open source projects.
+manager](https://github.com/spinframework/runtime-class-manager).
 
 With SpinKube, you can leverage the advantages of using WebAssembly (Wasm) for your workloads:
 
@@ -23,13 +22,16 @@ With SpinKube, you can leverage the advantages of using WebAssembly (Wasm) for y
   workloads).
 - Substantially fewer resources are required during idle times.
 
-Thanks to Spin Operator, we can do all of this while integrating with Kubernetes primitives (DNS,
-probes, autoscaling, metrics, and many more cloud native and CNCF projects).
+Thanks to SpinKube, we can do all of this while integrating with Kubernetes primitives including
+DNS, probes, autoscaling, metrics, and many more cloud native and CNCF projects.
 
 ![SpinKube Project Overview Diagram](../spinkube-overview-diagram.png)
 
-Spin Operator watches [Spin App Custom Resources]({{< ref "glossary#spinapp-manifest" >}}) and
-realizes the desired state in the Kubernetes cluster. The foundation of this project was built using
-the kubebuilder framework and contains a Spin App Custom Resource Definition (CRD) and controller.
+SpinKube watches [Spin App Custom Resources]({{< ref "glossary#spinapp-manifest" >}}) and realizes
+the desired state in the Kubernetes cluster. The foundation of this project was built using the
+[kubebuilder](https://github.com/kubernetes-sigs/kubebuilder) framework and contains a Spin App
+Custom Resource Definition (CRD) and controller.
+
+SpinKube is a [Cloud Native Computing Foundation](https://www.cncf.io/) sandbox project.
 
 To get started, check out our [Quickstart guide]({{< ref "quickstart" >}}).
