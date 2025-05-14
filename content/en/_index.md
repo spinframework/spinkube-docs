@@ -55,6 +55,10 @@ Check out the [contribution guidelines](/docs/contrib/) to learn how to get invo
 
 ---
 
+{{% /blocks/lead %}}
+
+{{% blocks/section %}}
+
 <img class="responsive mx-auto d-block"
     width="300"
     alt="cloud-native computing"
@@ -66,4 +70,4 @@ Check out the [contribution guidelines](/docs/contrib/) to learn how to get invo
   <div class="text-center">The Linux Foundation® (TLF) has registered trademarks and uses trademarks. For a list of TLF trademarks, see <a href="https://www.linuxfoundation.org/trademark-usage">Trademark Usage</a></div>
 </p>
 
-{{% /blocks/lead %}}
+{{% /blocks/section %}}
