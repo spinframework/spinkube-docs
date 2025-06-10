@@ -20,36 +20,29 @@ essentials to work with containers and Kubernetes on your desktop.
 
   1. **Download Rancher Desktop**:
       - Navigate to the [Rancher Desktop releases
-        page](https://github.com/rancher-sandbox/rancher-desktop/releases/tag/v1.14.0).
-      - Select the appropriate installer for your operating system for version 1.14.0.
+        page](https://github.com/rancher-sandbox/rancher-desktop/releases). We tested this documentation with Rancher Desktop `1.19.1` with Spin `v3.2.0`, but it should work with more recent versions.
+      - Select the appropriate installer for your operating system.
   2. **Install Rancher Desktop**:
       - Run the downloaded installer and follow the on-screen instructions to complete the
         installation.
 
 ### Step 2: Configure Rancher Desktop
 
-  - Open Rancher Desktop.
-  - Navigate to the **Preferences** -> **Kubernetes** menu.
-  - Ensure that the **Enable** **Kubernetes** is selected and that the **Enable Traefik** and
-    **Install Spin Operator** Options are checked. Make sure to **Apply** your changes.
-
-![Rancher Desktop](../rancher-desktop-kubernetes.png)
-
-  - Make sure to select `rancher-desktop` from the `Kubernetes Contexts` configuration in your
-    toolbar.
-
-![Kubernetes contexts](../rancher-desktop-contexts.png)
-
-  - Make sure that the Enable Wasm option is checked in the **Preferences** → **Container Engine
-    section**. Remember to always apply your changes.
+  - Open Rancher Desktop
+  - Configure `containerd` as your container runtime engine (under **Preferences** -> **Container Engine**).
+  - Make sure that the Enable Wasm option is checked in the **Preferences** → **Container Engine**
+    section. Remember to always apply your changes.
 
 ![Rancher preferences](../rancher-desktop-preferences.png)
 
-  - Once your changes have been applied, go to the **Cluster Dashboard** → **More Resources** →
-    **Cert Manager** section and click on **Certificates**. You will see the
-    `spin-operator-serving-cert` is ready.
+  - Navigate to the **Preferences** -> **Kubernetes** menu.
+  - Enable Kubernetes, Traefik and Spin Operator (under **Preferences** -> **Kubernetes** ensure that the **Enable Kubernetes**, **Enable Traefik** and **Install Spin Operator** options are checked.) 
 
-![Certificates tab](../rancher-desktop-certificates.png)
+![Rancher Desktop](../rancher-desktop-kubernetes.png)
+
+  - Make sure to select `rancher-desktop` from your Kubernetes contexts: `kubectl config use-context rancher-desktop`
+
+  - Once your changes have been applied, go to the **Cluster Dashboard** -> **Workloads**. You should see the `spin-operator-controller-manager` deployed to the `spin-operator` namespace.
 
 ### Step 3: Creating a Spin Application
 
@@ -61,17 +54,21 @@ essentials to work with containers and Kubernetes on your desktop.
   $ spin new -t http-js hello-k3s --accept-defaults
   $ cd hello-k3s
 ```
-3. We can edit the `/src/index.js` file and make the workload return a string "Hello from Rancher
-   Desktop":
+
+3. We can edit the `/src/index.js` file and make the workload return a string "Hello from Rancher Desktop":
 
 ```javascript
-export async function handleRequest(request) {
-    return {
-        status: 200,
-        headers: {"content-type": "text/plain"},
-        body: "Hello from Rancher Desktop" // <-- This changed
-    }
-}
+import { AutoRouter } from 'itty-router';
+
+let router = AutoRouter();
+
+router
+    .get("/", () => new Response("Hello from Rancher Desktop")) // <-- this changed
+    .get('/hello/:name', ({ name }) => `Hello, ${name}!`)
+
+addEventListener('fetch', (event) => {
+    event.respondWith(router.fetch(event.request));
+});
 ```
 
 ### Step 4: Deploying Your Application
@@ -86,30 +83,15 @@ $ spin registry push ttl.sh/hello-k3s:0.1.0
 
 Replace `ttl.sh/hello-k3s:0.1.0` with your registry URL and tag.
 
-2. **Scaffold Kubernetes resources**:
+2. **Deploy your Spin application to the cluster**:
 
-```bash
-$ spin kube scaffold --from ttl.sh/hello-k3s:0.1.0
+Use the [`spin-kube` plugin](https://github.com/spinframework/spin-plugin-kube) to deploy your application to the cluster
 
-apiVersion: core.spinkube.dev/v1alpha1
-kind: SpinApp
-metadata:
-  name: hello-k3s
-spec:
-  image: "ttl.sh/hello-k3s:0.1.0"
-  executor: containerd-shim-spin
-  replicas: 2
+```sh
+spin kube scaffold --from ttl.sh/hello-k3s:0.1.0 | kubectl apply -f -
 ```
 
-This command prepares the necessary Kubernetes deployment configurations.
-
-3. **Deploy the application to Kubernetes**:
-
-```bash
-$ spin kube deploy --from ttl.sh/hello-k3s:0.1.0
-```
-
-If we click on the Rancher Desktop’s “Cluster Dashboard”, we can see hello-k3s:0.1.0 running inside
+If we click on the Rancher Desktop’s “Cluster Dashboard”, we can see `hello-k3s` is running inside
 the “Workloads” dropdown section:
 
 ![Rancher Desktop Preferences Wasm](../rancher-desktop-cluster.png)
