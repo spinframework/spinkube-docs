@@ -133,6 +133,15 @@ cannot be defined if this is enabled. By default EnableAutoscaling is false.<br/
         </td>
         <td>false</td>
       </tr><tr>
+        <td><b>invocationLimits</b></td>
+        <td>map[string]string</td>
+        <td>
+          InvocationLimits define limits to be applied per invocation of the app.
+The keys are the names of the limits and the values are the limit values.
+SpinKube executors may define their own limits.<br/>
+        </td>
+        <td>false</td>
+      </tr><tr>
         <td><b>podAnnotations</b></td>
         <td>map[string]string</td>
         <td>

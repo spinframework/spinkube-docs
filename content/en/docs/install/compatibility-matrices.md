@@ -18,10 +18,11 @@ used, the application may not execute as expected. The following maps out the ve
 containerd shim](https://github.com/spinframework/containerd-shim-spin), Spin Operator, and `spin kube`
 plugin that have support for specific features.
 
-| Feature              | SpinApp field | Shim Version | Spin Operator Version | `spin kube` plugin version |
-| -------------------- | ------------- | ------------ | --------------------- | -------------------------- |
-| OTEL Traces          | `otel`        | v0.15.0      | v0.3.0                | NA                         |
-| Selective Deployment | `components`  | v0.17.0      | v0.4.0                | v0.3.0                     |
+| Feature              | SpinApp Field      | Shim Version | Spin Operator Version | `spin kube` Plugin Version |
+|----------------------|--------------------|--------------|-----------------------|----------------------------|
+| OTEL Traces          | `otel`             | v0.15.0      | v0.3.0                | NA                         |
+| Selective Deployment | `components`       | v0.17.0      | v0.4.0                | v0.3.0                     |
+| Invocation Limits    | `invocationLimits` | v0.20.0      | v0.6.0                | NA                         |
 
 > NA indicates that the feature in not available yet in that project
 
@@ -31,17 +32,17 @@ For tracking the availability of Spin features and compatibility of Spin SDKs, t
 indicates which versions of the Spin runtime the [Spin containerd
 shim](https://github.com/spinframework/containerd-shim-spin) uses.
 
-| Shim Version | Spin Version |
-|-------------|-------------|
-| **Spin v3.x** | |
-| *v0.19.0* | [Spin v3.2.0](https://github.com/fermyon/spin/releases/tag/v3.2.0) |
-| *v0.18.0* | [Spin v3.1.2](https://github.com/fermyon/spin/releases/tag/v3.1.2) |
-| *v0.17.0* | [Spin v3.0.0](https://github.com/fermyon/spin/releases/tag/v3.0.0) |
-| **Spin v2.x** | |
-| *v0.16.0* | [Spin v2.6.0](https://github.com/fermyon/spin/releases/tag/v2.6.0) |
-| *v0.15.1* | [Spin v2.6.0](https://github.com/fermyon/spin/releases/tag/v2.6.0) |
-| *v0.15.0* | [Spin v2.6.0](https://github.com/fermyon/spin/releases/tag/v2.6.0) |
-| *v0.14.1* | [Spin v2.4.3](https://github.com/fermyon/spin/releases/tag/v2.4.3) |
-| *v0.14.0* | [Spin v2.4.2](https://github.com/fermyon/spin/releases/tag/v2.4.2) |
-| *v0.13.0* | [Spin v2.3.1](https://github.com/fermyon/spin/releases/tag/v2.3.1) |
-| *v0.12.0* | [Spin v2.2.0](https://github.com/fermyon/spin/releases/tag/v2.2.0) |
+| Shim Version  | Spin Version                                                       |
+|---------------|--------------------------------------------------------------------|
+| **Spin v3.x** |                                                                    |
+| *v0.19.0*     | [Spin v3.2.0](https://github.com/fermyon/spin/releases/tag/v3.2.0) |
+| *v0.18.0*     | [Spin v3.1.2](https://github.com/fermyon/spin/releases/tag/v3.1.2) |
+| *v0.17.0*     | [Spin v3.0.0](https://github.com/fermyon/spin/releases/tag/v3.0.0) |
+| **Spin v2.x** |                                                                    |
+| *v0.16.0*     | [Spin v2.6.0](https://github.com/fermyon/spin/releases/tag/v2.6.0) |
+| *v0.15.1*     | [Spin v2.6.0](https://github.com/fermyon/spin/releases/tag/v2.6.0) |
+| *v0.15.0*     | [Spin v2.6.0](https://github.com/fermyon/spin/releases/tag/v2.6.0) |
+| *v0.14.1*     | [Spin v2.4.3](https://github.com/fermyon/spin/releases/tag/v2.4.3) |
+| *v0.14.0*     | [Spin v2.4.2](https://github.com/fermyon/spin/releases/tag/v2.4.2) |
+| *v0.13.0*     | [Spin v2.3.1](https://github.com/fermyon/spin/releases/tag/v2.3.1) |
+| *v0.12.0*     | [Spin v2.2.0](https://github.com/fermyon/spin/releases/tag/v2.2.0) |
