@@ -43,7 +43,7 @@ spin plugins list --installed
 cloud 0.7.0 [installed]
 cloud-gpu 0.1.0 [installed]
 kube 0.1.1 [installed]
-pluginify 0.6.0 [installed]
+pluginify 0.6.1 [installed]
 ```
 
 ### Compiling from source

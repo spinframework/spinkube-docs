@@ -69,8 +69,8 @@ before proceeding.
 First, we need to apply a runtime class and a CRD for SpinKube:
 
 ```console { data-plausible="copy-quick-deploy-sample" }
-$ microk8s kubectl apply -f https://github.com/spinframework/spin-operator/releases/download/v0.6.0/spin-operator.runtime-class.yaml
-$ microk8s kubectl apply -f https://github.com/spinframework/spin-operator/releases/download/v0.6.0/spin-operator.crds.yaml
+$ microk8s kubectl apply -f https://github.com/spinframework/spin-operator/releases/download/v0.6.1/spin-operator.runtime-class.yaml
+$ microk8s kubectl apply -f https://github.com/spinframework/spin-operator/releases/download/v0.6.1/spin-operator.crds.yaml
 ```
 
 Both of these should apply immediately.
@@ -90,7 +90,7 @@ $ microk8s kubectl annotate node --all kwasm.sh/kwasm-node=true
 Next, we need to install SpinKube’s operator using Helm (which is included with Microk8s).
 
 ```console { data-plausible="copy-quick-deploy-sample" }
-$ microk8s helm install spin-operator --namespace spin-operator --create-namespace --version 0.6.0 --wait oci://ghcr.io/spinframework/charts/spin-operator
+$ microk8s helm install spin-operator --namespace spin-operator --create-namespace --version 0.6.1 --wait oci://ghcr.io/spinframework/charts/spin-operator
 
 ```
 
@@ -98,7 +98,7 @@ Now we have the main operator installed. There is just one more step. We need to
 executor, which is a special CRD that allows us to use multiple executors for WebAssembly.
 
 ```console { data-plausible="copy-quick-deploy-sample" }
-$ microk8s kubectl apply -f https://github.com/spinframework/spin-operator/releases/download/v0.6.0/spin-operator.shim-executor.yaml
+$ microk8s kubectl apply -f https://github.com/spinframework/spin-operator/releases/download/v0.6.1/spin-operator.shim-executor.yaml
 
 ```
 
