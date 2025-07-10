@@ -62,7 +62,7 @@ here we install the defaults.
   representing Spin applications to be scheduled on the cluster.
 
 ```shell
-kubectl apply -f https://github.com/spinframework/spin-operator/releases/download/v0.6.0/spin-operator.crds.yaml
+kubectl apply -f https://github.com/spinframework/spin-operator/releases/download/v0.6.1/spin-operator.crds.yaml
 ```
 
 - Next we create a [RuntimeClass]({{< ref "glossary#runtime-class" >}}) that points to the `spin`
@@ -70,7 +70,7 @@ kubectl apply -f https://github.com/spinframework/spin-operator/releases/downloa
   on a subset of nodes, you'll need to modify the RuntimeClass with a `nodeSelector:`:
 
 ```shell
-kubectl apply -f https://github.com/spinframework/spin-operator/releases/download/v0.6.0/spin-operator.runtime-class.yaml
+kubectl apply -f https://github.com/spinframework/spin-operator/releases/download/v0.6.1/spin-operator.runtime-class.yaml
 ```
 
 - Finally, we create a `containerd-spin-shim` [SpinAppExecutor]({{< ref
@@ -78,7 +78,7 @@ kubectl apply -f https://github.com/spinframework/spin-operator/releases/downloa
   just created to run Spin Apps:
 
 ```shell
-kubectl apply -f https://github.com/spinframework/spin-operator/releases/download/v0.6.0/spin-operator.shim-executor.yaml
+kubectl apply -f https://github.com/spinframework/spin-operator/releases/download/v0.6.1/spin-operator.shim-executor.yaml
 ```
 
 ### Installing the Spin Operator Chart
@@ -90,7 +90,7 @@ The following installs the chart with the release name `spin-operator`:
 helm install spin-operator \
   --namespace spin-operator \
   --create-namespace \
-  --version 0.6.0 \
+  --version 0.6.1 \
   --wait \
   oci://ghcr.io/spinframework/charts/spin-operator
 ```
@@ -101,7 +101,7 @@ Note that you may also need to upgrade the spin-operator CRDs in tandem with upg
 release:
 
 ```shell
-kubectl apply -f https://github.com/spinframework/spin-operator/releases/download/v0.6.0/spin-operator.crds.yaml
+kubectl apply -f https://github.com/spinframework/spin-operator/releases/download/v0.6.1/spin-operator.crds.yaml
 ```
 
 To upgrade the `spin-operator` release, run the following:
@@ -110,7 +110,7 @@ To upgrade the `spin-operator` release, run the following:
 # Upgrade Spin Operator using Helm
 helm upgrade spin-operator \
   --namespace spin-operator \
-  --version 0.6.0 \
+  --version 0.6.1 \
   --wait \
   oci://ghcr.io/spinframework/charts/spin-operator
 ```
@@ -130,7 +130,7 @@ To completely uninstall all resources related to spin-operator, you may want to 
 corresponding CRD resources and the RuntimeClass:
 
 ```shell
-kubectl delete -f https://github.com/spinframework/spin-operator/releases/download/v0.6.0/spin-operator.shim-executor.yaml
-kubectl delete -f https://github.com/spinframework/spin-operator/releases/download/v0.6.0/spin-operator.runtime-class.yaml
-kubectl delete -f https://github.com/spinframework/spin-operator/releases/download/v0.6.0/spin-operator.crds.yaml
+kubectl delete -f https://github.com/spinframework/spin-operator/releases/download/v0.6.1/spin-operator.shim-executor.yaml
+kubectl delete -f https://github.com/spinframework/spin-operator/releases/download/v0.6.1/spin-operator.runtime-class.yaml
+kubectl delete -f https://github.com/spinframework/spin-operator/releases/download/v0.6.1/spin-operator.crds.yaml
 ```
