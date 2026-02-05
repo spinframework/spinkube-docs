@@ -13,8 +13,8 @@ In this tutorial, you install Spin Operator on an Azure Kubernetes Service (AKS)
 a simple Spin application. You will learn how to:
 
 - Deploy an AKS cluster
-- Install Spin Operator Custom Resource Definition and Runtime Class
-- Install and verify containerd shim via Kwasm
+- Install Spin Operator Custom Resource Definitions
+- Install and verify containerd shim via Runtime Class Manager
 - Deploy a simple Spin App custom resource on your cluster
 
 <!-- TODO: To learn more about any of these concepts, please visit the [Spin Operator Conceptual article](link-to-concept-article). -->
@@ -86,9 +86,6 @@ installed.
 ```shell
 # Install the CRDs
 kubectl apply -f https://github.com/spinframework/spin-operator/releases/download/v0.6.1/spin-operator.crds.yaml
-
-# Install the Runtime Class
-kubectl apply -f https://github.com/spinframework/spin-operator/releases/download/v0.6.1/spin-operator.runtime-class.yaml
 ```
 
 The following installs [cert-manager](https://github.com/cert-manager/cert-manager) which is
@@ -110,37 +107,39 @@ helm install cert-manager jetstack/cert-manager \
   --version v1.14.3
 ```
 
-The Spin Operator chart also has a dependency on [Kwasm](https://kwasm.sh/), which you use to
-install `containerd-wasm-shim` on the Kubernetes node(s):
+The Spin Operator chart also has a dependency on [Runtime Class Manager](https://github.com/spinframework/runtime-class-manager), which is used to install the containerd Spin shim on the Kubernetes node(s):
 
-<!-- TODO: When we have a node-installer img published from spinkube/containerd-shim-spin, we'll update the helm install step below to --set with that override.
--->
 
 ```shell
-# Add Helm repository if not already done
-helm repo add kwasm http://kwasm.sh/kwasm-operator/
-helm repo update
-
-# Install KWasm operator
-helm install \
-  kwasm-operator kwasm/kwasm-operator \
-  --namespace kwasm \
+# Install Runtime Class Manager
+helm install runtime-class-manager  \
+  --namespace runtime-class-manager \
   --create-namespace \
+<<<<<<< HEAD
   --set kwasmOperator.installerImage=ghcr.io/spinframework/containerd-shim-spin/node-installer:v0.23.0
+=======
+  --version 0.1.0 \
+  oci://ghcr.io/spinframework/charts/runtime-class-manager
+>>>>>>> fba2bbc (docs(content): updates per Runtime Class Manager replacing kwasm-operator)
 
-# Provision Nodes
-kubectl annotate node --all kwasm.sh/kwasm-node=true
+# Create Shim resource for installing the containerd-shim-spin binary
+kubectl apply -f https://raw.githubusercontent.com/spinframework/runtime-class-manager/refs/heads/main/config/samples/test_shim_spin.yaml
+
+# Label all Nodes where the shim should be installed (and thus where Spin Apps may run)
+# Note: this specific key and value matches the nodeSelector configuration used in the Shim resource above
+kubectl label node --all spin=true
 ```
 
-To verify `containerd-wasm-shim` installation, you can inspect the logs from the Kwasm Operator:
+To verify `containerd-shim-spin` installation, you can inspect the logs from the Runtime Class Manager:
 
 ```shell
-# Inspect logs from the Kwasm Operator
-kubectl logs -n kwasm -l app.kubernetes.io/name=kwasm-operator
+# Inspect logs from the Runtime Class Manager
+kubectl logs -n runtime-class-manager -l app.kubernetes.io/name=runtime-class-manager
 
-{"level":"info","node":"aks-nodepool1-31687461-vmss000000","time":"2024-02-12T11:23:43Z","message":"Trying to Deploy on aks-nodepool1-31687461-vmss000000"}
-{"level":"info","time":"2024-02-12T11:23:43Z","message":"Job aks-nodepool1-31687461-vmss000000-provision-kwasm is still Ongoing"}
-{"level":"info","time":"2024-02-12T11:24:00Z","message":"Job aks-nodepool1-31687461-vmss000000-provision-kwasm is Completed. Happy WASMing"}
+{"level":"info","shim":"spin-v2","time":"2026-02-05T22:33:18Z","message":"Deploying install-Job for Shim spin-v2 on node: kind-control-plane"}
+{"level":"debug","job":"kind-control-plane-spin-v2-install","time":"2026-02-05T22:33:18Z","message":"Job Reconciliation started!"}
+...
+{"level":"info","job":"kind-control-plane-spin-v2-install","time":"2026-02-05T22:33:38Z","message":"Job kind-control-plane-spin-v2-install is Completed."}
 ```
 
 The following installs the chart with the release name `spin-operator` in the `spin-operator`

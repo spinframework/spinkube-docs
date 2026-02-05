@@ -75,13 +75,21 @@ $ microk8s kubectl apply -f https://github.com/spinframework/spin-operator/relea
 
 Both of these should apply immediately.
 
-We then need to install KWasm because it is not yet included with Microk8s:
+We then need to install Runtime Class Manager because it is not yet included with Microk8s:
 
 ```console { data-plausible="copy-quick-deploy-sample" }
-$ microk8s helm repo add kwasm http://kwasm.sh/kwasm-operator/
-$ microk8s helm install kwasm-operator kwasm/kwasm-operator --namespace kwasm --create-namespace --set kwasmOperator.installerImage=ghcr.io/spinframework/containerd-shim-spin/node-installer:v0.23.0
-$ microk8s kubectl annotate node --all kwasm.sh/kwasm-node=true
+microk8s helm install runtime-class-manager  \
+  --namespace runtime-class-manager \
+  --create-namespace \
+  --version 0.1.0 \
+  oci://ghcr.io/spinframework/charts/runtime-class-manager
 
+# Create Shim resource for installing the containerd-shim-spin binary
+microk8s kubectl apply -f https://raw.githubusercontent.com/spinframework/runtime-class-manager/refs/heads/main/config/samples/test_shim_spin.yaml
+
+# Label all Nodes where the shim should be installed (and thus where Spin Apps may run)
+# Note: this specific key and value matches the nodeSelector configuration used in the Shim resource above
+microk8s kubectl label node --all spin=true
 ```
 
 > The last line above tells Microk8s that all nodes on the cluster (which is just one node in this
@@ -142,12 +150,11 @@ simple-spinapp-5c7b66f576-9v9fd   1/1     Running   0          45m
 
 ### Troubleshooting
 
-If `STATUS` gets stuck in `ContainerCreating`, it is possible that KWasm did not install correctly.
-Try doing a `microk8s stop`, waiting a few minutes, and then running `microk8s start`. You can also
-try the command:
+If `STATUS` gets stuck in `ContainerCreating`, it is possible that Runtime Class Manager did not install
+the `containerd-shim-spin` binary correctly. To see the logs, try:
 
 ```console { data-plausible="copy-quick-deploy-sample" }
-$ microk8s kubectl logs -n kwasm -l app.kubernetes.io/name=kwasm-operator
+$ microk8s kubectl logs -n runtime-class-manager -l app.kubernetes.io/name=runtime-class-manager
 ```
 
 ### Testing the Spin App
