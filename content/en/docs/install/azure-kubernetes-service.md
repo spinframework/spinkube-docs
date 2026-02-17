@@ -131,17 +131,14 @@ ARCH=x86_64 kubectl apply -f https://raw.githubusercontent.com/spinframework/run
 kubectl label node --all spin=true
 ```
 
-To verify `containerd-shim-spin` installation, you can inspect the logs from the Runtime Class Manager:
+To verify `containerd-shim-spin` installation, you can inspect the status of the Shim resource as updated by Runtime Class Manager:
 
 ```shell
-# Inspect logs from the Runtime Class Manager
-kubectl logs -n runtime-class-manager -l app.kubernetes.io/name=runtime-class-manager
-
-{"level":"info","shim":"spin-v2","time":"2026-02-05T22:33:18Z","message":"Deploying install-Job for Shim spin-v2 on node: kind-control-plane"}
-{"level":"debug","job":"kind-control-plane-spin-v2-install","time":"2026-02-05T22:33:18Z","message":"Job Reconciliation started!"}
-...
-{"level":"info","job":"kind-control-plane-spin-v2-install","time":"2026-02-05T22:33:38Z","message":"Job kind-control-plane-spin-v2-install is Completed."}
+# Inspect the Shim resource
+kubectl get shim spin-v2 --no-headers -o custom-columns=":status.nodesReady"
 ```
+
+The command above should return the same number of Nodes in your cluster (i.e. as labeled in the step above).
 
 The following installs the chart with the release name `spin-operator` in the `spin-operator`
 namespace:
