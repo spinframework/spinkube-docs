@@ -85,7 +85,8 @@ microk8s helm upgrade --install runtime-class-manager  \
   oci://ghcr.io/spinframework/charts/runtime-class-manager
 
 # Create Shim resource for installing the containerd-shim-spin binary
-microk8s kubectl apply -f https://raw.githubusercontent.com/spinframework/runtime-class-manager/refs/heads/main/config/samples/test_shim_spin.yaml
+# This assumes Nodes have architecture x86_64; use ARCH=aarch64 otherwise
+ARCH=x86_64 kubectl apply -f https://raw.githubusercontent.com/spinframework/runtime-class-manager/refs/heads/main/config/samples/sample_shim_spin_$ARCH.yaml
 
 # Label all Nodes where the shim should be installed (and thus where Spin Apps may run)
 # Note: this specific key and value matches the nodeSelector configuration used in the Shim resource above
