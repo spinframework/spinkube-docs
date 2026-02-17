@@ -66,16 +66,15 @@ SpinKube provides the entire toolkit for running Spin serverless apps. You may w
 yourself with the [SpinKube quickstart](https://www.spinkube.dev/docs/install/quickstart/) guide
 before proceeding.
 
-First, we need to apply a runtime class and a CRD for SpinKube:
+First, we need to apply the CRDs for SpinKube:
 
 ```console { data-plausible="copy-quick-deploy-sample" }
-$ microk8s kubectl apply -f https://github.com/spinframework/spin-operator/releases/download/v0.6.1/spin-operator.runtime-class.yaml
 $ microk8s kubectl apply -f https://github.com/spinframework/spin-operator/releases/download/v0.6.1/spin-operator.crds.yaml
 ```
 
-Both of these should apply immediately.
+These should apply immediately.
 
-We then need to install Runtime Class Manager because it is not yet included with Microk8s:
+We then need to install Runtime Class Manager because it is not yet included with Microk8s. It handles installing WebAssembly shims on Kubernetes nodes that don't already include them. See more details at the project's [README.md](https://github.com/spinframework/runtime-class-manager/blob/main/README.md).
 
 ```console { data-plausible="copy-quick-deploy-sample" }
 microk8s helm upgrade --install runtime-class-manager  \
