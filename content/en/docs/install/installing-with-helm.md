@@ -36,7 +36,7 @@ kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/
 
 ```shell
 # Install Runtime Class Manager
-helm install runtime-class-manager  \
+helm upgrade --install runtime-class-manager  \
   --namespace runtime-class-manager \
   --create-namespace \
   --version 0.1.0 \
@@ -80,7 +80,7 @@ The following installs the chart with the release name `spin-operator`:
 
 ```shell
 # Install Spin Operator with Helm
-helm install spin-operator \
+helm upgrade --install spin-operator \
   --namespace spin-operator \
   --create-namespace \
   --version 0.6.1 \

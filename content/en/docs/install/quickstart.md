@@ -74,7 +74,7 @@ and pods are spinning up.
 
 ```console { data-plausible="copy-quick-deploy-operator" }
 # Install Spin Operator with Helm
-helm install spin-operator \
+helm upgrade --install spin-operator \
   --namespace spin-operator \
   --create-namespace \
   --version 0.6.1 \

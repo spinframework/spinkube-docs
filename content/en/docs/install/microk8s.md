@@ -78,7 +78,7 @@ Both of these should apply immediately.
 We then need to install Runtime Class Manager because it is not yet included with Microk8s:
 
 ```console { data-plausible="copy-quick-deploy-sample" }
-microk8s helm install runtime-class-manager  \
+microk8s helm upgrade --install runtime-class-manager  \
   --namespace runtime-class-manager \
   --create-namespace \
   --version 0.1.0 \
@@ -98,7 +98,7 @@ microk8s kubectl label node --all spin=true
 Next, we need to install SpinKube’s operator using Helm (which is included with Microk8s).
 
 ```console { data-plausible="copy-quick-deploy-sample" }
-$ microk8s helm install spin-operator --namespace spin-operator --create-namespace --version 0.6.1 --wait oci://ghcr.io/spinframework/charts/spin-operator
+$ microk8s helm upgrade --install spin-operator --namespace spin-operator --create-namespace --version 0.6.1 --wait oci://ghcr.io/spinframework/charts/spin-operator
 
 ```
 

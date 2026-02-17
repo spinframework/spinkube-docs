@@ -101,7 +101,7 @@ helm repo add jetstack https://charts.jetstack.io
 helm repo update
 
 # Install the cert-manager Helm chart
-helm install cert-manager jetstack/cert-manager \
+helm upgrade --install cert-manager jetstack/cert-manager \
   --namespace cert-manager \
   --create-namespace \
   --version v1.14.3
@@ -112,7 +112,7 @@ The Spin Operator chart also has a dependency on [Runtime Class Manager](https:/
 
 ```shell
 # Install Runtime Class Manager
-helm install runtime-class-manager  \
+helm upgrade --install runtime-class-manager  \
   --namespace runtime-class-manager \
   --create-namespace \
 <<<<<<< HEAD
@@ -146,7 +146,7 @@ The following installs the chart with the release name `spin-operator` in the `s
 namespace:
 
 ```shell
-helm install spin-operator \
+helm upgrade --install spin-operator \
   --namespace spin-operator \
   --create-namespace \
   --version 0.6.1 \
