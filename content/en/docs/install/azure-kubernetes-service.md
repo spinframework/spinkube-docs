@@ -115,16 +115,11 @@ The Spin Operator chart also has a dependency on [Runtime Class Manager](https:/
 helm upgrade --install runtime-class-manager  \
   --namespace runtime-class-manager \
   --create-namespace \
-<<<<<<< HEAD
-  --set kwasmOperator.installerImage=ghcr.io/spinframework/containerd-shim-spin/node-installer:v0.23.0
-=======
-  --version 0.1.0 \
+  --version 0.2.0 \
   oci://ghcr.io/spinframework/charts/runtime-class-manager
->>>>>>> fba2bbc (docs(content): updates per Runtime Class Manager replacing kwasm-operator)
 
 # Create Shim resource for installing the containerd-shim-spin binary
-# This assumes Nodes have architecture x86_64; use ARCH=aarch64 otherwise
-ARCH=x86_64 kubectl apply -f https://raw.githubusercontent.com/spinframework/runtime-class-manager/refs/heads/main/config/samples/sample_shim_spin_$ARCH.yaml
+kubectl apply -f https://raw.githubusercontent.com/spinframework/runtime-class-manager/refs/tags/v0.2.0/config/samples/sample_shim_spin.yaml
 
 # Label all Nodes where the shim should be installed (and thus where Spin Apps may run)
 # Note: this specific key and value matches the nodeSelector configuration used in the Shim resource above
