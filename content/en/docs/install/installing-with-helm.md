@@ -32,24 +32,25 @@ Before installing the chart, you'll need to ensure the following are installed:
 kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.14.5/cert-manager.yaml
 ```
 
-- [Kwasm Operator](https://github.com/kwasm/kwasm-operator) is required to install WebAssembly shims
-  on Kubernetes nodes that don't already include them. Note that in the future this will be replaced
-  by [runtime class manager]({{< ref "architecture#runtime-class-manager" >}}).
+- [Runtime Class Manager](https://github.com/spinframework/runtime-class-manager) is required to install WebAssembly shims on Kubernetes nodes that don't already include them. See more details at the project's [README.md](https://github.com/spinframework/runtime-class-manager/blob/main/README.md).
 
 ```shell
-# Add Helm repository if not already done
-helm repo add kwasm http://kwasm.sh/kwasm-operator/
-
-# Install KWasm operator
-helm install \
-  kwasm-operator kwasm/kwasm-operator \
-  --namespace kwasm \
+# Install Runtime Class Manager
+helm upgrade --install runtime-class-manager  \
+  --namespace runtime-class-manager \
   --create-namespace \
-  --set kwasmOperator.installerImage=ghcr.io/spinframework/containerd-shim-spin/node-installer:v0.23.0
+  --version 0.2.0 \
+  oci://ghcr.io/spinframework/charts/runtime-class-manager
 
-# Provision Nodes
-kubectl annotate node --all kwasm.sh/kwasm-node=true
+# Create Shim resource for installing the containerd-shim-spin binary
+kubectl apply -f https://raw.githubusercontent.com/spinframework/runtime-class-manager/refs/tags/v0.2.0/config/samples/sample_shim_spin.yaml
+
+# Label all Nodes where the shim should be installed (and thus where Spin Apps may run)
+# Note: this specific key and value matches the nodeSelector configuration used in the Shim resource above
+kubectl label node --all spin=true
 ```
+
+You should now see a `wasmtime-spin-v2` RuntimeClass and all labeled Nodes should be ready to run Spin Apps.
 
 ## Chart prerequisites
 
@@ -63,14 +64,6 @@ here we install the defaults.
 
 ```shell
 kubectl apply -f https://github.com/spinframework/spin-operator/releases/download/v0.6.1/spin-operator.crds.yaml
-```
-
-- Next we create a [RuntimeClass]({{< ref "glossary#runtime-class" >}}) that points to the `spin`
-  handler called `wasmtime-spin-v2`. If you are deploying to a production cluster that only has a shim
-  on a subset of nodes, you'll need to modify the RuntimeClass with a `nodeSelector:`:
-
-```shell
-kubectl apply -f https://github.com/spinframework/spin-operator/releases/download/v0.6.1/spin-operator.runtime-class.yaml
 ```
 
 - Finally, we create a `containerd-spin-shim` [SpinAppExecutor]({{< ref
@@ -87,13 +80,15 @@ The following installs the chart with the release name `spin-operator`:
 
 ```shell
 # Install Spin Operator with Helm
-helm install spin-operator \
+helm upgrade --install spin-operator \
   --namespace spin-operator \
   --create-namespace \
   --version 0.6.1 \
   --wait \
   oci://ghcr.io/spinframework/charts/spin-operator
 ```
+
+Head over to the [Quickstart](./quickstart.md#run-the-sample-application) to deploy your first Spin App. Or, read on for how to upgrade or uninstall Spin Operator.
 
 ### Upgrading the Chart
 
@@ -127,10 +122,9 @@ helm delete spin-operator --namespace spin-operator
 This will remove all Kubernetes resources associated with the chart and deletes the Helm release.
 
 To completely uninstall all resources related to spin-operator, you may want to delete the
-corresponding CRD resources and the RuntimeClass:
+corresponding CRD resources:
 
 ```shell
 kubectl delete -f https://github.com/spinframework/spin-operator/releases/download/v0.6.1/spin-operator.shim-executor.yaml
-kubectl delete -f https://github.com/spinframework/spin-operator/releases/download/v0.6.1/spin-operator.runtime-class.yaml
 kubectl delete -f https://github.com/spinframework/spin-operator/releases/download/v0.6.1/spin-operator.crds.yaml
 ```

@@ -64,6 +64,9 @@ to schedule Pods to specific nodes and target specific runtimes. By defining a `
 the appropriate `NodeSelector` and handler, Kubernetes can direct Wasm workloads to nodes equipped
 with the necessary Wasm runtimes and ensure they are executed with the correct runtime handler.
 
+> Note: [Runtime Class Manager](#runtime-class-manager) automatically handles creation of the
+appropriate `RuntimeClass` based on configuration supplied in [Shim](https://github.com/spinframework/runtime-class-manager/blob/main/config/crd/bases/runtime.spinkube.dev_shims.yaml) resources.
+
 Overall, the Containerd Shim Spin represents a significant advancement in integrating Wasm workloads
 into Kubernetes clusters, enhancing the versatility and capabilities of container orchestration.
 

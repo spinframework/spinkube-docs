@@ -30,6 +30,6 @@ Rancher Desktop by SUSE, is an open-source application that provides all the ess
 containers and Kubernetes on your desktop. If you would like to see how SpinKube integrates with
 Rancher Desktop, please read the ["Integrating With Rancher Desktop" tutorial]({{< ref
 "/docs/install/rancher-desktop" >}}) which walks through the steps of installing the necessary
-components for SpinKube (including the CertManager for SSL, CRDs and the KWasm runtime class manager
+components for SpinKube (including the CertManager for SSL, CRDs and the Runtime Class Manager
 using Helm charts). The tutorial then demonstrates how to create a simple Spin JavaScript
 application and deploys the application within Rancher Desktop's local cluster.

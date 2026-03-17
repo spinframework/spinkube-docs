@@ -103,39 +103,6 @@ error: error validating "https://github.com/cert-manager/cert-manager/releases/d
 This is because no cluster exists. You can create a cluster following the [Quickstart guide]({{< ref
 "quickstart" >}}).
 
-## Installation Failed
-
-When trying to install a new version of a chart you may get the following error:
-
-```console
-Error: INSTALLATION FAILED: cannot re-use a name that is still in use
-```
-
-For example, if you have installed `v0.14.0` of kwasm-operator using the following `helm install`
-command:
-
-```console
-helm install \
-  kwasm-operator kwasm/kwasm-operator \
-  --namespace kwasm \
-  --create-namespace \
-  --set kwasmOperator.installerImage=ghcr.io/spinkube/containerd-shim-spin/node-installer:v0.14.0
-```
-
-Reissuing the above command with the new version `v0.15.0` will result in the following error -
-`Error: INSTALLATION FAILED: cannot re-use a name that is still in use`. To use the same command
-when installing and upgrading a release, use `upgrade --install` ([as referenced here in the
-official Helm
-documentation](https://v2.helm.sh/docs/developing_charts/#upgrade-a-release-idempotently)). For
-example:
-
-```console
-helm upgrade --install \
-  kwasm-operator kwasm/kwasm-operator \
-  --namespace kwasm \
-  --create-namespace \
-  --set kwasmOperator.installerImage=ghcr.io/spinframework/containerd-shim-spin/node-installer:v0.23.0
-```
 
 ## Cluster Already Exists
 

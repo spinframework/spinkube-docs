@@ -66,22 +66,29 @@ SpinKube provides the entire toolkit for running Spin serverless apps. You may w
 yourself with the [SpinKube quickstart](https://www.spinkube.dev/docs/install/quickstart/) guide
 before proceeding.
 
-First, we need to apply a runtime class and a CRD for SpinKube:
+First, we need to apply the CRDs for SpinKube:
 
 ```console { data-plausible="copy-quick-deploy-sample" }
-$ microk8s kubectl apply -f https://github.com/spinframework/spin-operator/releases/download/v0.6.1/spin-operator.runtime-class.yaml
 $ microk8s kubectl apply -f https://github.com/spinframework/spin-operator/releases/download/v0.6.1/spin-operator.crds.yaml
 ```
 
-Both of these should apply immediately.
+These should apply immediately.
 
-We then need to install KWasm because it is not yet included with Microk8s:
+We then need to install Runtime Class Manager because it is not yet included with Microk8s. It handles installing WebAssembly shims on Kubernetes nodes that don't already include them. See more details at the project's [README.md](https://github.com/spinframework/runtime-class-manager/blob/main/README.md).
 
 ```console { data-plausible="copy-quick-deploy-sample" }
-$ microk8s helm repo add kwasm http://kwasm.sh/kwasm-operator/
-$ microk8s helm install kwasm-operator kwasm/kwasm-operator --namespace kwasm --create-namespace --set kwasmOperator.installerImage=ghcr.io/spinframework/containerd-shim-spin/node-installer:v0.23.0
-$ microk8s kubectl annotate node --all kwasm.sh/kwasm-node=true
+microk8s helm upgrade --install runtime-class-manager  \
+  --namespace runtime-class-manager \
+  --create-namespace \
+  --version 0.2.0 \
+  oci://ghcr.io/spinframework/charts/runtime-class-manager
 
+# Create Shim resource for installing the containerd-shim-spin binary
+kubectl apply -f https://raw.githubusercontent.com/spinframework/runtime-class-manager/refs/tags/v0.2.0/config/samples/sample_shim_spin.yaml
+
+# Label all Nodes where the shim should be installed (and thus where Spin Apps may run)
+# Note: this specific key and value matches the nodeSelector configuration used in the Shim resource above
+microk8s kubectl label node --all spin=true
 ```
 
 > The last line above tells Microk8s that all nodes on the cluster (which is just one node in this
@@ -90,7 +97,7 @@ $ microk8s kubectl annotate node --all kwasm.sh/kwasm-node=true
 Next, we need to install SpinKube’s operator using Helm (which is included with Microk8s).
 
 ```console { data-plausible="copy-quick-deploy-sample" }
-$ microk8s helm install spin-operator --namespace spin-operator --create-namespace --version 0.6.1 --wait oci://ghcr.io/spinframework/charts/spin-operator
+$ microk8s helm upgrade --install spin-operator --namespace spin-operator --create-namespace --version 0.6.1 --wait oci://ghcr.io/spinframework/charts/spin-operator
 
 ```
 
@@ -142,12 +149,11 @@ simple-spinapp-5c7b66f576-9v9fd   1/1     Running   0          45m
 
 ### Troubleshooting
 
-If `STATUS` gets stuck in `ContainerCreating`, it is possible that KWasm did not install correctly.
-Try doing a `microk8s stop`, waiting a few minutes, and then running `microk8s start`. You can also
-try the command:
+If `STATUS` gets stuck in `ContainerCreating`, it is possible that Runtime Class Manager did not install
+the `containerd-shim-spin` binary correctly. To see the logs, try:
 
 ```console { data-plausible="copy-quick-deploy-sample" }
-$ microk8s kubectl logs -n kwasm -l app.kubernetes.io/name=kwasm-operator
+$ microk8s kubectl logs -n runtime-class-manager -l app.kubernetes.io/name=runtime-class-manager
 ```
 
 ### Testing the Spin App

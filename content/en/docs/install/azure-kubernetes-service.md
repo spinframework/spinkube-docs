@@ -13,8 +13,8 @@ In this tutorial, you install Spin Operator on an Azure Kubernetes Service (AKS)
 a simple Spin application. You will learn how to:
 
 - Deploy an AKS cluster
-- Install Spin Operator Custom Resource Definition and Runtime Class
-- Install and verify containerd shim via Kwasm
+- Install Spin Operator Custom Resource Definitions
+- Install and verify containerd shim via Runtime Class Manager
 - Deploy a simple Spin App custom resource on your cluster
 
 <!-- TODO: To learn more about any of these concepts, please visit the [Spin Operator Conceptual article](link-to-concept-article). -->
@@ -86,9 +86,6 @@ installed.
 ```shell
 # Install the CRDs
 kubectl apply -f https://github.com/spinframework/spin-operator/releases/download/v0.6.1/spin-operator.crds.yaml
-
-# Install the Runtime Class
-kubectl apply -f https://github.com/spinframework/spin-operator/releases/download/v0.6.1/spin-operator.runtime-class.yaml
 ```
 
 The following installs [cert-manager](https://github.com/cert-manager/cert-manager) which is
@@ -104,50 +101,45 @@ helm repo add jetstack https://charts.jetstack.io
 helm repo update
 
 # Install the cert-manager Helm chart
-helm install cert-manager jetstack/cert-manager \
+helm upgrade --install cert-manager jetstack/cert-manager \
   --namespace cert-manager \
   --create-namespace \
   --version v1.14.3
 ```
 
-The Spin Operator chart also has a dependency on [Kwasm](https://kwasm.sh/), which you use to
-install `containerd-wasm-shim` on the Kubernetes node(s):
+The Spin Operator chart also has a dependency on [Runtime Class Manager](https://github.com/spinframework/runtime-class-manager), which is used to install the containerd Spin shim on the Kubernetes node(s):
 
-<!-- TODO: When we have a node-installer img published from spinkube/containerd-shim-spin, we'll update the helm install step below to --set with that override.
--->
 
 ```shell
-# Add Helm repository if not already done
-helm repo add kwasm http://kwasm.sh/kwasm-operator/
-helm repo update
-
-# Install KWasm operator
-helm install \
-  kwasm-operator kwasm/kwasm-operator \
-  --namespace kwasm \
+# Install Runtime Class Manager
+helm upgrade --install runtime-class-manager  \
+  --namespace runtime-class-manager \
   --create-namespace \
-  --set kwasmOperator.installerImage=ghcr.io/spinframework/containerd-shim-spin/node-installer:v0.23.0
+  --version 0.2.0 \
+  oci://ghcr.io/spinframework/charts/runtime-class-manager
 
-# Provision Nodes
-kubectl annotate node --all kwasm.sh/kwasm-node=true
+# Create Shim resource for installing the containerd-shim-spin binary
+kubectl apply -f https://raw.githubusercontent.com/spinframework/runtime-class-manager/refs/tags/v0.2.0/config/samples/sample_shim_spin.yaml
+
+# Label all Nodes where the shim should be installed (and thus where Spin Apps may run)
+# Note: this specific key and value matches the nodeSelector configuration used in the Shim resource above
+kubectl label node --all spin=true
 ```
 
-To verify `containerd-wasm-shim` installation, you can inspect the logs from the Kwasm Operator:
+To verify `containerd-shim-spin` installation, you can inspect the status of the Shim resource as updated by Runtime Class Manager:
 
 ```shell
-# Inspect logs from the Kwasm Operator
-kubectl logs -n kwasm -l app.kubernetes.io/name=kwasm-operator
-
-{"level":"info","node":"aks-nodepool1-31687461-vmss000000","time":"2024-02-12T11:23:43Z","message":"Trying to Deploy on aks-nodepool1-31687461-vmss000000"}
-{"level":"info","time":"2024-02-12T11:23:43Z","message":"Job aks-nodepool1-31687461-vmss000000-provision-kwasm is still Ongoing"}
-{"level":"info","time":"2024-02-12T11:24:00Z","message":"Job aks-nodepool1-31687461-vmss000000-provision-kwasm is Completed. Happy WASMing"}
+# Inspect the Shim resource
+kubectl get shim spin-v2 --no-headers -o custom-columns=":status.nodesReady"
 ```
+
+The command above should return the same number of Nodes in your cluster (i.e. as labeled in the step above).
 
 The following installs the chart with the release name `spin-operator` in the `spin-operator`
 namespace:
 
 ```shell
-helm install spin-operator \
+helm upgrade --install spin-operator \
   --namespace spin-operator \
   --create-namespace \
   --version 0.6.1 \
