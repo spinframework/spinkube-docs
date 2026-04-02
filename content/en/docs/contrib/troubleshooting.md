@@ -95,9 +95,9 @@ When trying to run the `kubectl apply -f <URL>` command (for example installing 
 etc.) you may encounter an error similar to the following:
 
 ```
-$ kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.14.3/cert-manager.yaml
+$ kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.20.0/cert-manager.yaml
 
-error: error validating "https://github.com/cert-manager/cert-manager/releases/download/v1.14.3/cert-manager.yaml": error validating data: failed to download openapi: Get "https://127.0.0.1:6443/openapi/v2?timeout=32s": dial tcp 127.0.0.1:6443: connect: connection refused; if you choose to ignore these errors, turn validation off with --validate=false
+error: error validating "https://github.com/cert-manager/cert-manager/releases/download/v1.20.0/cert-manager.yaml": error validating data: failed to download openapi: Get "https://127.0.0.1:6443/openapi/v2?timeout=32s": dial tcp 127.0.0.1:6443: connect: connection refused; if you choose to ignore these errors, turn validation off with --validate=false
 ```
 
 This is because no cluster exists. You can create a cluster following the [Quickstart guide]({{< ref
