@@ -50,7 +50,7 @@ documentation](https://cert-manager.io/docs/installation/).
 
 ```console
 # Install cert-manager CRDs
-kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.14.3/cert-manager.crds.yaml
+kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.20.0/cert-manager.crds.yaml
 
 # Add and update Jetstack repository
 helm repo add jetstack https://charts.jetstack.io
@@ -61,7 +61,7 @@ helm install \
   cert-manager jetstack/cert-manager \
   --namespace cert-manager \
   --create-namespace \
-  --version v1.14.3
+  --version v1.20.0
 ```
 
 Next, run the following commands to install the Spin [Runtime Class]({{<ref

@@ -29,7 +29,7 @@ Before installing the chart, you'll need to ensure the following are installed:
   instructions see [the cert-manager documentation](https://cert-manager.io/docs/installation/).
 
 ```shell
-kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.14.5/cert-manager.yaml
+kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.20.0/cert-manager.yaml
 ```
 
 - [Runtime Class Manager](https://github.com/spinframework/runtime-class-manager) is required to install WebAssembly shims on Kubernetes nodes that don't already include them. See more details at the project's [README.md](https://github.com/spinframework/runtime-class-manager/blob/main/README.md).

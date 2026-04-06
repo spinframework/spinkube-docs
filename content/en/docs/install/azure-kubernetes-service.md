@@ -94,7 +94,7 @@ system of Spin Operator)
 
 ```shell
 # Install cert-manager CRDs
-kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.14.3/cert-manager.crds.yaml
+kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.20.0/cert-manager.crds.yaml
 
 # Add and update Jetstack repository
 helm repo add jetstack https://charts.jetstack.io
@@ -104,7 +104,7 @@ helm repo update
 helm upgrade --install cert-manager jetstack/cert-manager \
   --namespace cert-manager \
   --create-namespace \
-  --version v1.14.3
+  --version v1.20.0
 ```
 
 The Spin Operator chart also has a dependency on [Runtime Class Manager](https://github.com/spinframework/runtime-class-manager), which is used to install the containerd Spin shim on the Kubernetes node(s):

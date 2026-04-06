@@ -223,7 +223,7 @@ the steps below will only include short descriptions:
 
 ```shell
 # Install cert-manager
-kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.14.3/cert-manager.yaml
+kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.20.0/cert-manager.yaml
 
 # Install the Runtime Class
 kubectl apply -f https://github.com/spinframework/spin-operator/releases/download/v0.1.0/spin-operator.runtime-class.yaml
