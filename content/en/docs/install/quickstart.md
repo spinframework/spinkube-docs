@@ -30,7 +30,7 @@ For this Quickstart guide, you will need:
 
 ```console { data-plausible="copy-quick-create-k3d" }
 k3d cluster create wasm-cluster \
-  --image ghcr.io/spinframework/containerd-shim-spin/k3d:v0.23.0 \
+  --image ghcr.io/spinframework/containerd-shim-spin/k3d:v0.24.0 \
   --port "8081:80@loadbalancer" \
   --agents 2
 ```
@@ -42,7 +42,7 @@ k3d cluster create wasm-cluster \
 2. Install cert-manager
 
 ```console { data-plausible="copy-quick-install-cert-manager" }
-kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.14.3/cert-manager.yaml
+kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.20.0/cert-manager.yaml
 kubectl wait --for=condition=available --timeout=300s deployment/cert-manager-webhook -n cert-manager
 ```
 
