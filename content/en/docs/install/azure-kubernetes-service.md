@@ -119,7 +119,7 @@ helm upgrade --install runtime-class-manager  \
   oci://ghcr.io/spinframework/charts/runtime-class-manager
 
 # Create Shim resource for installing the containerd-shim-spin binary
-kubectl apply -f https://github.com/spinframework/containerd-shim-spin/releases/download/v0.25.0/runtime-class-manager-shim-v1alpha1-v0.25.0.yaml
+kubectl apply -f https://github.com/spinframework/containerd-shim-spin/releases/download/v0.25.1/runtime-class-manager-shim-v1alpha1-v0.25.1.yaml
 
 # Label all Nodes where the shim should be installed (and thus where Spin Apps may run)
 # Note: this specific key and value matches the nodeSelector configuration used in the Shim resource above
