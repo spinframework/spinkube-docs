@@ -35,7 +35,7 @@ containerd-shim-spin](https://github.com/spinframework/containerd-shim-spin) pre
 you have a Kubernetes cluster already, or want to start with a more production ready SpinKube installation, follow the [Helm installation guide](../../install/installing-with-helm.md) instead, which include instructions for configuring the Runtime Class Manager for managing the lifecycle of the Spin containerd shim. The following `kind` cluster creation creates a three node cluster with containerd configuration to instruct containerd to use the Spin containerd shim for workloads scheduled with the `spin` runtime class. We are also exposing host port 8081 to make load testing easier in later steps.
 
 ```console
-cat <<EOF | kind create cluster --name wasm-cluster-scale --image ghcr.io/spinframework/containerd-shim-spin/kind:v0.25.0 --config=-
+cat <<EOF | kind create cluster --name wasm-cluster-scale --image ghcr.io/spinframework/containerd-shim-spin/kind:v0.26.0 --config=-
 kind: Cluster
 apiVersion: kind.x-k8s.io/v1alpha4
 containerdConfigPatches:
