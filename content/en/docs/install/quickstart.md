@@ -27,7 +27,7 @@ For this Quickstart guide, you will need:
    installed. During creation of the kind cluster, we add containerd configuration to instruct containerd to use the Spin containerd shim for workloads scheduled with the `spin` runtime class.:
 
 ```console { data-plausible="copy-quick-create-kind" }
-cat <<EOF | kind create cluster --name wasm-cluster --image ghcr.io/spinframework/containerd-shim-spin/kind:v0.25.0 --config=-
+cat <<EOF | kind create cluster --name wasm-cluster --image ghcr.io/spinframework/containerd-shim-spin/kind:v0.26.0 --config=-
 kind: Cluster
 apiVersion: kind.x-k8s.io/v1alpha4
 containerdConfigPatches:
