@@ -35,6 +35,8 @@ shim](https://github.com/spinframework/containerd-shim-spin) uses.
 | Shim Version  | Spin Version                                                       |
 |---------------|--------------------------------------------------------------------|
 | **Spin v4.x** |                                                                    |
+| *v0.27.1*     | [Spin v4.2.5](https://github.com/fermyon/spin/releases/tag/v4.2.5) |
+| *v0.27.0*     | [Spin v4.2.5](https://github.com/fermyon/spin/releases/tag/v4.2.5) |
 | *v0.26.0*     | [Spin v4.1.0](https://github.com/fermyon/spin/releases/tag/v4.1.0) |
 | *v0.25.1*     | [Spin v4.0.0](https://github.com/fermyon/spin/releases/tag/v4.0.0) |
 | *v0.25.0*     | [Spin v4.0.0](https://github.com/fermyon/spin/releases/tag/v4.0.0) |
